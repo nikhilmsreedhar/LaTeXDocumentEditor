@@ -40,5 +40,5 @@ def generate_pdf(filename):
             os.remove(folder + file_name)
 
 
-tempFileName = generate_tex(r"C:\Users\sohil\Documents\pubChemGetReq\test.txt")
-generate_pdf(tempFileName)
+# tempFileName = generate_tex(r"C:\Users\sohil\Documents\pubChemGetReq\test.txt")
+# generate_pdf(tempFileName)

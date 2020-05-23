@@ -6,6 +6,7 @@ import textToWolfram
 import fileConversions
 import synthesize
 
+
 def get_image_from_input(text_in, el_name, choice):
     # Choices:
     # 0 - typed math

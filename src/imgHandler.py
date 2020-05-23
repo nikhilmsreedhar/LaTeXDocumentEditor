@@ -79,9 +79,9 @@ def write_latex_eq_to_txt(latex, element_name):
     handle.write("\\end{equation}\n")
 
 
-input_example = "integral from 0 to 2 of x^2 dx"
-j = img_to_json(test_path)
-tex = json_to_latex(j)
-tex = latex_cropper(input_example, tex)
-write_latex_eq_to_txt(tex, "equation numero boog")
-latex_to_png('../out/' + "equation numero boog.txt")
+# input_example = "integral from 0 to 2 of x^2 dx"
+# j = img_to_json(test_path)
+# tex = json_to_latex(j)
+# tex = latex_cropper(input_example, tex)
+# write_latex_eq_to_txt(tex, "equation numero boog")
+# latex_to_png('../out/' + "equation numero boog.txt")
