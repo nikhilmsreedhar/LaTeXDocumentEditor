@@ -3,7 +3,8 @@ from PIL import Image
 import imgHandler
 import chemReq
 import textToWolfram
-
+import fileConversions
+import synthesize
 
 def get_image_from_input(text_in, el_name, choice):
     # Choices:
@@ -57,4 +58,8 @@ def get_image_from_input(text_in, el_name, choice):
         print("Invalid choice")
 
 
+def export(file_names, project_name):
+    synthesize.write_elements_to_master_txt(file_names, project_name)
+    file_name = fileConversions.generate_tex("../out/" + project_name + ".txt")
+    fileConversions.generate_pdf(file_name)
 
