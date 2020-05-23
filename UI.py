@@ -75,11 +75,11 @@ class MainWindow(QMainWindow):
         self.mainTabHBox = QHBoxLayout(self)
 
         self.mainFileButton = QPushButton("File")
-        self.mainFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.mainFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         self.mainFileButton.clicked.connect(self.mainScreen)
 
         self.mainInsertButton = QPushButton("Insert")
-        self.mainInsertButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.mainInsertButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
 
         self.mainTabHBox.addWidget(self.mainFileButton)
         self.mainTabHBox.addWidget(self.mainInsertButton)
@@ -88,21 +88,28 @@ class MainWindow(QMainWindow):
         self.mainTabWidget = QWidget()
         self.mainTabWidget.setLayout(self.mainTabHBox)
 
-        self.previewVBox = QVBoxLayout(self)
-        self.previewWidget = QWidget()
-        self.previewWidget.setLayout(self.previewVBox)
-        self.previewWidget.setStyleSheet("""
+        self.mainPreviewVBox = QVBoxLayout(self)
+        self.mainPreviewWidget = QWidget()
+        self.mainPreviewWidget.setLayout(self.mainPreviewVBox)
+        self.mainPreviewWidget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.mainPreviewWidget.setStyleSheet("""
         QWidget {
-            border: 2px solid black;
+            border: 0.5px solid gray;
             border-radius: 5px;
-            background-color: rgb(255, 0, 0);
+            background-color: rgb(245, 245, 220);
             }
         """)
 
-        self.mainVBox.addWidget(self.mainTabWidget)
-        self.mainVBox.addWidget(self.previewWidget)
+        self.mainPageSimHBox = QHBoxLayout(self)
+        self.mainPageSimHBox.addSpacing(600)
+        self.mainPageSimHBox.addWidget(self.mainPreviewWidget)
+        self.mainPageSimHBox.addSpacing(600)
 
-        self.mainVBox.addSpacing(975)
+        self.mainVBox.addWidget(self.mainTabWidget)
+        # self.mainVBox.addSpacing(10)
+        self.mainVBox.addLayout(self.mainPageSimHBox)
+
+        # self.mainVBox.addSpacing()
 
         self.mainWidget = QWidget()
         self.mainWidget.setLayout(self.mainVBox)
@@ -120,15 +127,12 @@ class MainWindow(QMainWindow):
         self.widget.setLayout(self.stackPane)
 
 
-
-
         # self.setLayout(self.hBox)
         # self.homePage = HomePageWidget(self)
 
         # Set the central widget of the Window. Widget will expand
         # to take up all the space in the window by default.
         self.setCentralWidget(self.widget)
-        self.setGeometry(0,0,2000,2000)
 
 # class HomePageWidget(QWidget):
 #     def onPushNewFile(parent):
@@ -178,6 +182,6 @@ class MainWindow(QMainWindow):
 app = QApplication(sys.argv)
 
 window = MainWindow()
-window.show()
+window.showMaximized()
 
 app.exec_()
