@@ -64,3 +64,6 @@ def export(file_names, project_name):
     file_name = fileConversions.generate_tex("../out/" + project_name + ".txt")
     fileConversions.generate_pdf(file_name)
 
+
+get_image_from_input("integral from 0 to 1 of x^3 dx", "equation1", 0)
+
