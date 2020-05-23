@@ -46,5 +46,5 @@ def generatePdf(filename):
     #cmd = ['pdflatex', '-interaction', 'nonstopmode', filename]
     #proc = subprocess.Popen(cmd)
     #proc.communicate()
-tempFileName = generateTex(r"testDoc.txt")
+tempFileName = generateTex(r"C:\Users\sohil\Documents\pubChemGetReq\test.txt")
 generatePdf(tempFileName)
