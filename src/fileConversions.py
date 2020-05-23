@@ -9,7 +9,8 @@ import pathlib
 
 
 def generate_tex(filepath):
-    dir_path = os.path.dirname(os.path.realpath(__file__))
+    # dir_path = os.path.dirname(os.path.realpath(__file__))
+    dir_path = "../resources/"
     temp_tex = dir_path + r"\temp.tex"
     print(temp_tex)
     fo = open(temp_tex, "w")
