@@ -17,7 +17,21 @@ class MainWindow(QMainWindow):
         print('hello')
         self.stackPane.setCurrentIndex(1)
 
-
+    def insertElement(self):
+        maxElements = 10
+        print('meme')
+        elementList = []
+        for x in range(self.mainPreviewVBox.count()):
+            elementList.append(self.mainPreviewVBox.itemAt(x))
+        print(str(elementList))
+        self.mainPreviewVBox = QVBoxLayout()
+        for x in range(len(elementList)):
+            self.mainPreviewVBox.addSpacing(75)
+            self.mainPreviewVBox.addWidget(elementList[x])
+        self.mainPreviewVBox.addSpacing(75)
+        self.mainPreviewVBox.addWidget(QLabel('hello'))
+        self.mainPreviewVBox.addSpacing((maxElements - len(elementList) + 1) * 100)
+        # self.mainPreviewVBox.addWidget(QLabel('hello'))
 
 
 
@@ -80,6 +94,7 @@ class MainWindow(QMainWindow):
 
         self.mainInsertButton = QPushButton("Insert")
         self.mainInsertButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        self.mainInsertButton.clicked.connect(self.insertElement)
 
         self.mainTabHBox.addWidget(self.mainFileButton)
         self.mainTabHBox.addWidget(self.mainInsertButton)
@@ -95,14 +110,17 @@ class MainWindow(QMainWindow):
         self.mainPreviewWidget.setStyleSheet("""
         QWidget {
             border: 0.5px solid gray;
-            border-radius: 5px;
             background-color: rgb(245, 245, 220);
             }
         """)
+        self.mainScroll = QScrollArea()
+        self.mainScroll.setWidget(self.mainPreviewWidget)
+        self.mainScroll.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.mainScroll.setWidgetResizable(True)
 
         self.mainPageSimHBox = QHBoxLayout(self)
         self.mainPageSimHBox.addSpacing(600)
-        self.mainPageSimHBox.addWidget(self.mainPreviewWidget)
+        self.mainPageSimHBox.addWidget(self.mainScroll)
         self.mainPageSimHBox.addSpacing(600)
 
         self.mainVBox.addWidget(self.mainTabWidget)
