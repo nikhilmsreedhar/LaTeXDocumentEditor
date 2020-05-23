@@ -75,15 +75,34 @@ class MainWindow(QMainWindow):
         self.mainTabHBox = QHBoxLayout(self)
 
         self.mainFileButton = QPushButton("File")
+        self.mainFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.mainFileButton.clicked.connect(self.mainScreen)
 
         self.mainInsertButton = QPushButton("Insert")
+        self.mainInsertButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
         self.mainTabHBox.addWidget(self.mainFileButton)
         self.mainTabHBox.addWidget(self.mainInsertButton)
-        self.mainTabHBox.addSpacing(1000)
+        self.mainTabHBox.addSpacing(1650)
 
-        self.mainVBox.addLayout(self.mainTabHBox)
+        self.mainTabWidget = QWidget()
+        self.mainTabWidget.setLayout(self.mainTabHBox)
+
+        self.previewVBox = QVBoxLayout(self)
+        self.previewWidget = QWidget()
+        self.previewWidget.setLayout(self.previewVBox)
+        self.previewWidget.setStyleSheet("""
+        QWidget {
+            border: 2px solid black;
+            border-radius: 5px;
+            background-color: rgb(255, 0, 0);
+            }
+        """)
+
+        self.mainVBox.addWidget(self.mainTabWidget)
+        self.mainVBox.addWidget(self.previewWidget)
+
+        self.mainVBox.addSpacing(975)
 
         self.mainWidget = QWidget()
         self.mainWidget.setLayout(self.mainVBox)
