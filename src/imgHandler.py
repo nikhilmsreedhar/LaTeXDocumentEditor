@@ -40,8 +40,8 @@ def latex_to_png(latex_file_name):
     latex = latex[0:new_line_index]
     latex = "$$" + latex + "$$"
 
-    preview(latex, output='png', viewer='file', filename='./out/' + element_name + '.png', euler=False)
-    img = Image.open('./out/' + element_name + '.png')
+    preview(latex, output='png', viewer='file', filename='../out/' + element_name + '.png', euler=False)
+    img = Image.open('../out/' + element_name + '.png')
     return img
 
 
@@ -73,7 +73,7 @@ def json_to_latex(json_file):
 
 
 def write_latex_eq_to_txt(latex, element_name):
-    handle = open('./out/' + element_name + '.txt', 'w')
+    handle = open('../out/' + element_name + '.txt', 'w')
     handle.write("\\begin{equation}\n")
     handle.write(latex + '\n')
     handle.write("\\end{equation}\n")
@@ -84,4 +84,4 @@ j = img_to_json(test_path)
 tex = json_to_latex(j)
 tex = latex_cropper(input_example, tex)
 write_latex_eq_to_txt(tex, "equation numero boog")
-latex_to_png('./out/' + "equation numero boog.txt")
+latex_to_png('../out/' + "equation numero boog.txt")

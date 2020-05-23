@@ -19,7 +19,7 @@ def img_src_from_dict(dictionary):
 
 def download_img(img_url):
     image = Image.open(urllib.request.urlopen(img_url))
-    image.save(r"./imgs/tempimg.gif")
+    image.save(r"../imgs/tempimg.gif")
 
 
 r = text_input_to_dict("integral from 0 to 2 of x^2 dx")

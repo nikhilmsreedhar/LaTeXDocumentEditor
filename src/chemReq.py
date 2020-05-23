@@ -15,8 +15,8 @@ def get_molecule_image(molecule, element_name):
 
 
 def write_latex_molecule_to_txt(element_name):
-    handle = open('./out/' + element_name + '.txt', 'w')
+    handle = open('../out/' + element_name + '.txt', 'w')
     handle.write("\\begin{figure}[ht!]\n")
     handle.write("\\centering\n")
-    handle.write("\\includgraphics[width=90mm]{./imgs/" + element_name + ".png}\n")
+    handle.write("\\includgraphics[width=90mm]{../imgs/" + element_name + ".png}\n")
     handle.write("\\end{figure}")
