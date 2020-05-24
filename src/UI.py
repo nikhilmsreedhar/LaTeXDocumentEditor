@@ -71,13 +71,7 @@ class MainWindow(QMainWindow):
         # get rid of the file upload button
 
 
-    #convert the strings to json then saving the file locally
-    def convertToJson(self):
-        dictionary = {}
-        for x in range(len(self.array))
-            dictionary.update(x, self.array[x])
-        with open("project_data.json", "w") as write_file:
-            json.dump(dictionary, write_file)
+
 
 
     def submitChem(self):
@@ -242,6 +236,14 @@ class MainWindow(QMainWindow):
     def subsection(self):
         self.insertElement('subsection')
 
+    # convert the strings to json then saving the file locally
+    def convertToJson(self):
+        dictionary = {}
+        for x in range(len(self.array)):
+             dictionary.update(x, self.array[x])
+
+        with open("project_data.json", "w") as write_file:
+            json.dump(dictionary, write_file)
 
 
 
@@ -259,8 +261,8 @@ class MainWindow(QMainWindow):
         self.homeV2Box = QVBoxLayout(self)
         self.homeH2Box = QHBoxLayout(self)
         self.homeH2Box.setSpacing(0)
-        self.array = []
 
+        self.array = []
 
 
         self.homeAppName = QLabel("EzLaTeX")
