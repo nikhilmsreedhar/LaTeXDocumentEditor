@@ -71,7 +71,7 @@ class MainWindow(QMainWindow):
 
         self.elementImage = ImageQt(img)
         # get rid of the file upload button
-        self.elementBodyStackPane.setCurrent(1)
+        # self.elementBodyStackPane.setCurrentIndex(1)
         # get rid of the file upload button
 
 
@@ -163,18 +163,18 @@ class MainWindow(QMainWindow):
             self.elementImage = None
             self.fileUploadButton.clicked.connect(self.fileUpload)
             self.elementBodyStackPane.addWidget(self.fileUploadButton)
-            self.elementOptionsHBox = QHBoxLayout()
-            self.elementPixMap = QPixmap.fromImage(self.elementImage)
-            self.elementEditButton = QPushButton('Edit')
-            self.elementDeleteButton = QPushButton('Delete')
-            self.elementMoveButton = QPushButton('Move')
-            self.elementOptionsHBox.addWidget(self.elementPixMap)
-            self.elementOptionsHBox.addWidget(self.elementEditButton)
-            self.elementOptionsHBox.addWidget(self.elementDeleteButton)
-            self.elementOptionsHBox.addWidget(self.elementMoveButton)
-            self.elementViewWidget = QtWidget()
-            self.elementViewWidget.setLayout(self.elementOptionsHBox)
-            self.elementBodyStackPane.addWidget(self.elementViewWidget)
+            # self.elementOptionsHBox = QHBoxLayout()
+            # self.elementPixMap = QPixmap.fromImage(self.elementImage)
+            # self.elementEditButton = QPushButton('Edit')
+            # self.elementDeleteButton = QPushButton('Delete')
+            # self.elementMoveButton = QPushButton('Move')
+            # self.elementOptionsHBox.addWidget(self.elementPixMap)
+            # self.elementOptionsHBox.addWidget(self.elementEditButton)
+            # self.elementOptionsHBox.addWidget(self.elementDeleteButton)
+            # self.elementOptionsHBox.addWidget(self.elementMoveButton)
+            # self.elementViewWidget = QtWidget()
+            # self.elementViewWidget.setLayout(self.elementOptionsHBox)
+            # self.elementBodyStackPane.addWidget(self.elementViewWidget)
 
         elif string == 'molecule':
             self.elementName = QLineEdit("Name your element! (e.g. Glucose Molecule)")
