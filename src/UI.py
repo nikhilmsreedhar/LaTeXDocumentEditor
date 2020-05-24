@@ -67,7 +67,7 @@ class MainWindow(QMainWindow):
         print(stringName)
         if filename:
             img = main.get_image_from_input(str(filename[0]), stringName, 1)
-
+        self.image = img
         # get rid of the file upload button
     def convertToJson(self):
         dictionary = {}
@@ -82,6 +82,7 @@ class MainWindow(QMainWindow):
         stringName = self.elementName.text()
         img = main.get_image_from_input(text_in, stringName, 2)
         print(img)
+        self.image = img
         self.array.append(stringName)
 
     def addPar(self):
@@ -116,9 +117,11 @@ class MainWindow(QMainWindow):
         stringName = self.elementName.text()
         img = main.get_image_from_input(text_in, stringName, 0)
         print(img)
+        self.image = img
         self.array.append(stringName)
 
-
+    def preview(self):
+        self.image.show()
 
     def newFileScreen(self):
         self.stackPane.setCurrentIndex(1)
@@ -133,7 +136,7 @@ class MainWindow(QMainWindow):
             self.mainPreviewVBox.itemAt(num - 1).changeSize(0,0)
 
         self.elementHeaderHBox = QHBoxLayout(self)
-
+        self.image = None
 
         if string == 'type math':
             self.elementName = QLineEdit("Name your element! (e.g. Equation 1)")
@@ -149,6 +152,9 @@ class MainWindow(QMainWindow):
             self.elementInput = QLineEdit("Type your equation here in natural language (e.g. integral of x^3 dx).")
             self.elementVBoxButton.addWidget(self.elementInput)
             self.elementVBoxButton.addWidget(self.elementSubmitButton)
+            self.elementPreviewButton = QPushButton(self)
+            self.elementVBoxButton.addWidget(self.elementPreviewButton)
+            self.elementPreviewButton.clicked.connect(self.preview)
             self.elementSubmitWidget = QWidget()
             self.elementSubmitWidget.setLayout(self.elementVBoxButton)
             self.elementBodyStackPane.addWidget(self.elementSubmitWidget)
