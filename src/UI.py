@@ -267,6 +267,7 @@ class MainWindow(QMainWindow):
 
     def export(self):
         print("exporttt")
+        main.export(self.array, "Project 1")
 
     def typeMath(self):
         self.insertElement('type math')
