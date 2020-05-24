@@ -216,14 +216,20 @@ class MainWindow(QMainWindow):
             self.elementName = QLineEdit("Name your element! (e.g. Section 1)")
             # self.elementName.setGeometry(0,0,100,100)
             # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
-            print("")
             self.elementHeaderHBox.addWidget(self.elementName)
             self.elementHeaderHBox.addSpacing(150)
             self.elementBodyStackPane = QStackedLayout(self)
             self.elementVBoxButton = QVBoxLayout(self)
             self.elementSubmitButton = QPushButton('Add Section')
             self.elementSubmitButton.clicked.connect(self.addSec)
-            self.elementInput = QLineEdit("Type your paragraph here.")
+            self.elementInput = QLineEdit("Type your section name here.")
+            self.elementInput = QLineEdit("Type your section name here.")
+            self.elementBodyStackPane.addWidget(self.elementInput)
+
+            self.elementVBoxButton = QVBoxLayout(self)
+            self.elementSubmitButton = QPushButton('Add Section')
+            self.elementSubmitButton.clicked.connect(self.addSec)
+
             self.elementVBoxButton.addWidget(self.elementInput)
             self.elementVBoxButton.addWidget(self.elementSubmitButton)
             self.elementSubmitWidget = QWidget()
@@ -241,6 +247,14 @@ class MainWindow(QMainWindow):
             self.elementSubmitButton = QPushButton('Add Subsection')
             self.elementSubmitButton.clicked.connect(self.addSubSec)
             self.elementInput = QLineEdit("Type your subsection name here.")
+
+            self.elementInput = QLineEdit("Type your subsection name here.")
+            self.elementBodyStackPane.addWidget(self.elementInput)
+
+            self.elementVBoxButton = QVBoxLayout(self)
+            self.elementSubmitButton = QPushButton('Add Section')
+            self.elementSubmitButton.clicked.connect(self.addSubSec)
+
             self.elementVBoxButton.addWidget(self.elementInput)
             self.elementVBoxButton.addWidget(self.elementSubmitButton)
             self.elementSubmitWidget = QWidget()
@@ -399,7 +413,7 @@ class MainWindow(QMainWindow):
         }
 
         """)
-        self.homeAppText.setFont(QFont("Times", 24, QFont.Bold))
+        self.homeAppText.setFont(QFont("Times", 20, QFont.Bold))
 
         self.homeFormattingVBox = QVBoxLayout(self)
         self.homeFormattingVBox.addWidget(self.homeAppText)
