@@ -172,7 +172,7 @@ class MainWindow(QMainWindow):
             self.fileUploadButton.setCursor(QCursor(Qt.PointingHandCursor))
             self.fileUploadButton.setFont(QFont("Times", 12))
             self.elementImage = None
-            self.fileUploadButton.clicked.connect(self.fileUpload)
+
             self.elementBodyStackPane.addWidget(self.fileUploadButton)
             self.elementOptionsHBox = QHBoxLayout()
             self.elementPixMap = QPixmap.fromImage(self.elementImage)
@@ -182,10 +182,11 @@ class MainWindow(QMainWindow):
             self.elementOptionsHBox.addWidget(self.elementPixMap)
             self.elementOptionsHBox.addWidget(self.elementEditButton)
             self.elementOptionsHBox.addWidget(self.elementDeleteButton)
-            self.elementOptionsHBox.addWidget(self.elementMoveButton)   
+            self.elementOptionsHBox.addWidget(self.elementMoveButton)
             self.elementViewWidget = QtWidget()
             self.elementViewWidget.setLayout(self.elementOptionsHBox)
             self.elementBodyStackPane.addWidget(self.elementViewWidget)
+            self.fileUploadButton.clicked.connect(self.fileUpload)
 
         elif string == 'molecule':
             self.elementName = QLineEdit("Name your element! (e.g. Glucose Molecule)")
