@@ -45,7 +45,7 @@ class MainWindow(QMainWindow):
             #dlg.HBox.addWidget(QDialogButtonBox.No)
             dlg.setWindowModality(Qt.ApplicationModal)
             dlg.exec_()
-            
+
 
 
     def newFileScreen(self):
@@ -95,7 +95,7 @@ class MainWindow(QMainWindow):
         self.homeAppName.setAlignment(Qt.AlignCenter)
         self.homeAppName.setStyleSheet("""
         QWidget {
-        
+
         background-color: rgb(173, 216, 230);
         position: absolute;
         top: 0px;
@@ -239,7 +239,8 @@ class MainWindow(QMainWindow):
         self.mainPreviewWidget.setStyleSheet("""
         QWidget {
             border: 0.5px solid gray;
-            background-color: rgb(245, 245, 220);
+            background-color: rgb(255, 255, 255);
+            width: 100%;
             }
         """)
         self.mainScroll = QScrollArea()
@@ -248,9 +249,9 @@ class MainWindow(QMainWindow):
         self.mainScroll.setWidgetResizable(True)
 
         self.mainPageSimHBox = QHBoxLayout(self)
-        self.mainPageSimHBox.addSpacing(600)
+        self.mainPageSimHBox.addSpacing(200)
         self.mainPageSimHBox.addWidget(self.mainScroll)
-        self.mainPageSimHBox.addSpacing(600)
+        self.mainPageSimHBox.addSpacing(200)
 
         self.mainVBox.addWidget(self.mainTabWidget)
         # self.mainVBox.addSpacing(10)
