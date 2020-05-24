@@ -247,12 +247,12 @@ class MainWindow(QMainWindow):
             self.elementVBoxButton = QVBoxLayout(self)
             self.elementSubmitButton = QPushButton('Add Section')
             self.elementSubmitButton.clicked.connect(self.addSec)
-            self.elementInput = QLineEdit("Type your section name here.")
-            self.elementInput = QLineEdit("Type your section name here.")
-            self.elementBodyStackPane.addWidget(self.elementInput)
 
-            self.elementVBoxButton = QVBoxLayout(self)
-            self.elementSubmitButton = QPushButton('Add Section')
+            self.elementInput = QLineEdit("Type your section name here.")
+            # self.elementBodyStackPane.addWidget(self.elementInput)
+            #
+            # self.elementVBoxButton = QVBoxLayout(self)
+            # self.elementSubmitButton = QPushButton('Add Section')
             self.elementSubmitButton.clicked.connect(self.addSec)
 
             self.elementVBoxButton.addWidget(self.elementInput)
