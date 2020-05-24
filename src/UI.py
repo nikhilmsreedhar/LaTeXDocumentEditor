@@ -75,26 +75,31 @@ class MainWindow(QMainWindow):
         text_in = self.elementInput.text()
         stringName = self.elementName.text()
         img = main.get_image_from_input(text_in, stringName, 2)
+        print(img)
 
     def addPar(self):
         text_in = self.elementInput.text()
         stringName = self.elementName.text()
         img = main.get_image_from_input(text_in, stringName, 3)
+        print(img)
 
     def addSec(self):
         text_in = self.elementInput.text()
         stringName = self.elementName.text()
         img = main.get_image_from_input(text_in, stringName, 4)
+        print(img)
 
     def addSubSec(self):
         text_in = self.elementInput.text()
         stringName = self.elementName.text()
         img = main.get_image_from_input(text_in, stringName, 5)
+        print(img)
 
     def submitMath(self):
         text_in = self.elementInput.text()
         stringName = self.elementName.text()
         img = main.get_image_from_input(text_in, stringName, 0)
+        print(img)
 
 
     def newFileScreen(self):
