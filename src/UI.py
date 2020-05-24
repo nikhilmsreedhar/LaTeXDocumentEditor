@@ -1,5 +1,5 @@
 import sys
-
+import json
 import PySide2
 from PySide2.QtCore import *
 from PySide2.QtGui import *
@@ -62,10 +62,11 @@ class MainWindow(QMainWindow):
     def fileUpload(self):
         filename = QFileDialog.getOpenFileName(self, 'Open File', '../imgs/', "Images (*.png *.xpm *.jpg)")
         # 3rd parameter in previous line is default directory to open to
-        stringName = self.elementName.text()
+        stringName = self.elementName.text()#append to array
+        self.array.append(stringName)
         print(stringName)
         if filename:
-            img = main.get_image_from_input(str(filename[0]), stringName, 1) #how do I get the element name of the image into here?
+            img = main.get_image_from_input(str(filename[0]), stringName, 1)
 
         # get rid of the file upload button
 
@@ -108,7 +109,6 @@ class MainWindow(QMainWindow):
         stringName = self.elementName.text()
         img = main.get_image_from_input(text_in, stringName, 0)
         print(img)
-
 
 
     def newFileScreen(self):
@@ -213,6 +213,7 @@ class MainWindow(QMainWindow):
     def saveFile(self):
         print("saveee")
         self.save = True
+        #how to convert the array to json then save the json locally on out folder
 
     def export(self):
         print("exporttt")
@@ -350,7 +351,7 @@ class MainWindow(QMainWindow):
 
         self.homeFormattingVBox = QVBoxLayout(self)
         self.homeFormattingVBox.addWidget(self.homeAppText)
-        self.homeFormattingVBox.addSpacing(500)
+        self.homeFormattingVBox.addSpacing(50)
 
         self.homeVBox.addLayout(self.homeHBox)
         self.homeV2Box.addWidget(self.homeAppName)
