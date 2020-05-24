@@ -27,10 +27,12 @@ def generate_tex(filepath, project_name):
 def generate_pdf(filename, project_name):
     proc = subprocess.Popen(['pdflatex', filename])
     proc.communicate()
-    #folder_path = pathlib.Path(__file__).parent
-    shutil.move(pathlib.Path(__file__), "../out/" + project_name + ".pdf")
+    folder_path = pathlib.Path(__file__).parent
     folder = str(folder_path)
-    folder = folder + "\\"
+    folder += "\\"
+
+    shutil.move(folder + project_name + ".pdf", "../out/" + project_name + ".pdf")
+
     print(folder)
     for file_name in listdir(folder_path):
         if file_name.endswith('.toc'):

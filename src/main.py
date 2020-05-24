@@ -12,6 +12,9 @@ def get_image_from_input(text_in, el_name, choice):
     # 0 - typed math
     # 1 - image math (text_in is a file path)
     # 2 - typed molecule name
+    # 3 - paragraph text
+    # 4 - section
+    # 5 - subsection
 
     if choice == 0:
         # Use text input from User to get GIF from Wolfram
@@ -54,6 +57,21 @@ def get_image_from_input(text_in, el_name, choice):
         # Return previously found PNG
         return molecule_image
 
+    elif choice == 3:
+
+        handle = open('../out/' + el_name + '.txt', 'w')
+        handle.write(text_in + '\n')
+
+    elif choice == 4:
+
+        handle = open('../out/' + el_name + '.txt', 'w')
+        handle.write("section{" + text_in + "}\n")
+
+    elif choice == 5:
+
+        handle = open('../out/' + el_name + '.txt', 'w')
+        handle.write("subsection{" + text_in + "}\n")
+
     else:
         print("Invalid choice")
 
@@ -61,7 +79,7 @@ def get_image_from_input(text_in, el_name, choice):
 def export(file_names, project_name):
     synthesize.write_elements_to_master_txt(file_names, project_name)
     file_name = fileConversions.generate_tex("../out/" + project_name + ".txt", project_name)
-    fileConversions.generate_pdf(file_name)
+    fileConversions.generate_pdf(file_name, project_name)
 
 
 # get_image_from_input("integral from 0 to 1 of x^3 dx", "equation1", 0)
