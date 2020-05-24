@@ -63,8 +63,8 @@ class MainWindow(QMainWindow):
         # 3rd parameter in previous line is default directory to open to
 
         print(filename)
-        img = main.get_image_from_input(str(filename[0]), "test_oog", 1) #how do I get the element name of the image into here?
-        print (img)
+        if filename:
+            img = main.get_image_from_input(str(filename[0]), "test_oog", 1) #how do I get the element name of the image into here?
 
         # get rid of the file upload button
 
