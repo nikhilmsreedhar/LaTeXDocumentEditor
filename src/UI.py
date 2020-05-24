@@ -71,7 +71,6 @@ class MainWindow(QMainWindow):
         # get rid of the file upload button
 
 
-<<<<<<< HEAD
 
 
 
@@ -111,8 +110,7 @@ class MainWindow(QMainWindow):
         img = main.get_image_from_input(text_in, stringName, 0)
         print(img)
 
-=======
->>>>>>> parent of f8fa342... bruh
+
 
     def newFileScreen(self):
         self.stackPane.setCurrentIndex(1)
