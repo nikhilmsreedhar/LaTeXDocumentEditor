@@ -22,7 +22,8 @@ class MainWindow(QMainWindow):
                 self.mainPreviewVBox.removeItem(self.mainPreviewVBox.itemAt(y))
                 # y += 1
             else:
-                self.mainPreviewVBox.removeWidget(self.mainPreviewVBox.itemAt(y).widget())
+                self.mainPreviewVBox.itemAt(y).widget().hide()
+                #self.mainPreviewVBox.removeWidget(self.mainPreviewVBox.itemAt(y).widget())
 
         print(self.mainPreviewVBox.count())
         self.mainPreviewVBox.activate()
@@ -72,6 +73,40 @@ class MainWindow(QMainWindow):
         self.elementBodyStackPane.setCurrent(1)
 
 
+<<<<<<< HEAD
+=======
+
+    def submitChem(self):
+        text_in = self.elementInput.text()
+        stringName = self.elementName.text()
+        img = main.get_image_from_input(text_in, stringName, 2)
+        print(img)
+
+    def addPar(self):
+        text_in = self.elementInput.text()
+        stringName = self.elementName.text()
+        img = main.get_image_from_input(text_in, stringName, 3)
+        print(img)
+
+    def addSec(self):
+        text_in = self.elementInput.text()
+        stringName = self.elementName.text()
+        img = main.get_image_from_input(text_in, stringName, 4)
+        print(img)
+
+    def addSubSec(self):
+        text_in = self.elementInput.text()
+        stringName = self.elementName.text()
+        img = main.get_image_from_input(text_in, stringName, 5)
+        print(img)
+
+    def submitMath(self):
+        text_in = self.elementInput.text()
+        stringName = self.elementName.text()
+        img = main.get_image_from_input(text_in, stringName, 0)
+        print(img)
+
+>>>>>>> 0219c60bf24df0a148ca135407c43da95ccde741
 
     def newFileScreen(self):
         self.stackPane.setCurrentIndex(1)
@@ -97,7 +132,9 @@ class MainWindow(QMainWindow):
             self.elementBodyStackPane = QStackedLayout(self)
             self.elementVBoxButton = QVBoxLayout(self)
             self.elementSubmitButton = QPushButton('Add Math')
-            self.elementVBoxButton.addWidget(QLineEdit("Type your equation here in natural language (e.g. integral of x^3 dx)."))
+            self.elementSubmitButton.clicked.connect(self.submitMath)
+            self.elementInput = QLineEdit("Type your equation here in natural language (e.g. integral of x^3 dx).")
+            self.elementVBoxButton.addWidget(self.elementInput)
             self.elementVBoxButton.addWidget(self.elementSubmitButton)
             self.elementSubmitWidget = QWidget()
             self.elementSubmitWidget.setLayout(self.elementVBoxButton)
@@ -140,7 +177,16 @@ class MainWindow(QMainWindow):
             self.elementHeaderHBox.addWidget(self.elementName)
             self.elementHeaderHBox.addSpacing(150)
             self.elementBodyStackPane = QStackedLayout(self)
-            self.elementBodyStackPane.addWidget(QLineEdit("Type the name of the molecule you want here (e.g. glucose)."))
+
+            self.elementVBoxButton = QVBoxLayout(self)
+            self.elementSubmitButton = QPushButton('Add Molecule')
+            self.elementSubmitButton.clicked.connect(self.submitChem)
+            self.elementInput = QLineEdit("Type the name of the molecule you want here (e.g. glucose).")
+            self.elementVBoxButton.addWidget(self.elementInput)
+            self.elementVBoxButton.addWidget(self.elementSubmitButton)
+            self.elementSubmitWidget = QWidget()
+            self.elementSubmitWidget.setLayout(self.elementVBoxButton)
+            self.elementBodyStackPane.addWidget(self.elementSubmitWidget)
 
         elif string == 'paragraph':
             self.elementName = QLineEdit("Name your element! (e.g. Paragraph 1)")
@@ -149,7 +195,16 @@ class MainWindow(QMainWindow):
             self.elementHeaderHBox.addWidget(self.elementName)
             self.elementHeaderHBox.addSpacing(150)
             self.elementBodyStackPane = QStackedLayout(self)
-            self.elementBodyStackPane.addWidget(QLineEdit("Type your paragraph here."))
+
+            self.elementVBoxButton = QVBoxLayout(self)
+            self.elementSubmitButton = QPushButton('Add Paragraph')
+            self.elementSubmitButton.clicked.connect(self.addPar)
+            self.elementInput = QLineEdit("Type your paragraph here.")
+            self.elementVBoxButton.addWidget(self.elementInput)
+            self.elementVBoxButton.addWidget(self.elementSubmitButton)
+            self.elementSubmitWidget = QWidget()
+            self.elementSubmitWidget.setLayout(self.elementVBoxButton)
+            self.elementBodyStackPane.addWidget(self.elementSubmitWidget)
 
         elif string == 'section':
             self.elementName = QLineEdit("Name your element! (e.g. Section 1)")
@@ -158,7 +213,18 @@ class MainWindow(QMainWindow):
             self.elementHeaderHBox.addWidget(self.elementName)
             self.elementHeaderHBox.addSpacing(150)
             self.elementBodyStackPane = QStackedLayout(self)
-            self.elementBodyStackPane.addWidget(QLineEdit("Type your section name here."))
+            self.elementInput = QLineEdit("Type your section name here.")
+            self.elementBodyStackPane.addWidget(self.elementInput)
+
+            self.elementVBoxButton = QVBoxLayout(self)
+            self.elementSubmitButton = QPushButton('Add Section')
+            self.elementSubmitButton.clicked.connect(self.addSec)
+
+            self.elementVBoxButton.addWidget(self.elementInput)
+            self.elementVBoxButton.addWidget(self.elementSubmitButton)
+            self.elementSubmitWidget = QWidget()
+            self.elementSubmitWidget.setLayout(self.elementVBoxButton)
+            self.elementBodyStackPane.addWidget(self.elementSubmitWidget)
 
         else:
             self.elementName = QLineEdit("Name your element! (e.g. Subsection 3.4)")
@@ -168,7 +234,18 @@ class MainWindow(QMainWindow):
             self.elementHeaderHBox.addSpacing(150)
             # string is subsection
             self.elementBodyStackPane = QStackedLayout(self)
-            self.elementBodyStackPane.addWidget(QLineEdit("Type your subsection name here."))
+            self.elementInput = QLineEdit("Type your subsection name here.")
+            self.elementBodyStackPane.addWidget(self.elementInput)
+
+            self.elementVBoxButton = QVBoxLayout(self)
+            self.elementSubmitButton = QPushButton('Add Section')
+            self.elementSubmitButton.clicked.connect(self.addSubSec)
+
+            self.elementVBoxButton.addWidget(self.elementInput)
+            self.elementVBoxButton.addWidget(self.elementSubmitButton)
+            self.elementSubmitWidget = QWidget()
+            self.elementSubmitWidget.setLayout(self.elementVBoxButton)
+            self.elementBodyStackPane.addWidget(self.elementSubmitWidget)
 
         self.elementFinalVBox = QVBoxLayout(self)
 
@@ -310,11 +387,11 @@ class MainWindow(QMainWindow):
         }
 
         """)
-        self.homeAppText.setFont(QFont("Times", 24, QFont.Bold))
+        self.homeAppText.setFont(QFont("Times", 20, QFont.Bold))
 
         self.homeFormattingVBox = QVBoxLayout(self)
         self.homeFormattingVBox.addWidget(self.homeAppText)
-        self.homeFormattingVBox.addSpacing(500)
+        self.homeFormattingVBox.addSpacing(50)
 
         self.homeVBox.addLayout(self.homeHBox)
         self.homeV2Box.addWidget(self.homeAppName)
