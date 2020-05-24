@@ -9,6 +9,8 @@ from PySide2.QtCore import *
 
 # Subclass QMainWindow to customise your application's main window
 class MainWindow(QMainWindow):
+    saved = False
+
     def mainScreen(self):
         print('bruh')
         self.stackPane.setCurrentIndex(0)
@@ -18,6 +20,7 @@ class MainWindow(QMainWindow):
         self.stackPane.setCurrentIndex(1)
 
     def insertElement(self):
+        saved = False
         maxElements = 10
         print('meme')
         elementList = []
@@ -31,6 +34,7 @@ class MainWindow(QMainWindow):
 
     def save(self):
         print("saveee")
+        saved = True
 
     def export():
         print("exporttt")
