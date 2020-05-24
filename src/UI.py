@@ -128,6 +128,7 @@ class MainWindow(QMainWindow):
 
         #setting up menu drop down for file
         self.mainFileButton = QPushButton("File")
+        self.mainFileButton.setCursor(QCursor(Qt.PointingHandCursor))
         self.mainFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         self.mainFileButton.setMenu(QMenu(self.mainFileButton))
         self.mainFileButton.menu().addAction(self.mainHomeAction)
@@ -153,6 +154,7 @@ class MainWindow(QMainWindow):
         self.mainSaveAction.triggered.connect(self.save)
 
         self.mainInsertButton = QPushButton("Insert")
+        self.mainInsertButton.setCursor(QCursor(Qt.PointingHandCursor))
         self.mainInsertButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         # self.mainInsertButton.setMenu(QMenu(self.))
 
