@@ -28,18 +28,6 @@ def latex_cropper(text_in, latex):
     return latex
 
 
-def latex_to_what(latex_file_name, element_name):
-    handle = open(latex_file_name, 'r')
-    handle.readline()
-    latex = handle.readline()
-    handle.close()
-
-    # new_line_index = latex.find('\n')
-    # latex = latex[0:new_line_index]
-    # latex = "$$" + latex + "$$"
-
-    Latex(latex)
-
 def latex_to_png(latex_file_name, element_name):
     # backslash_index = latex_file_name.rfind("\\")
     # element_name = latex_file_name[backslash_index:]
