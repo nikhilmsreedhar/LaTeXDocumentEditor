@@ -59,13 +59,13 @@ class MainWindow(QMainWindow):
             self.mainScreen()
 
 
-    def fileUpload(self):
+    def fileUpload(self, stringName):
         filename = QFileDialog.getOpenFileName(self, 'Open File', '../imgs/', "Images (*.png *.xpm *.jpg)")
         # 3rd parameter in previous line is default directory to open to
 
         print(filename)
         if filename:
-            img = main.get_image_from_input(str(filename[0]), "test_oog", 1) #how do I get the element name of the image into here?
+            img = main.get_image_from_input(str(filename[0]), stringName, 1) #how do I get the element name of the image into here?
 
         # get rid of the file upload button
 
@@ -106,7 +106,7 @@ class MainWindow(QMainWindow):
             self.fileUploadButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
             self.fileUploadButton.setCursor(QCursor(Qt.PointingHandCursor))
             self.fileUploadButton.setFont(QFont("Times", 12))
-            self.fileUploadButton.clicked.connect(self.fileUpload)
+            self.fileUploadButton.clicked.connect(self.fileUpload(self.elementName.text()))
             self.elementBodyStackPane.addWidget(self.fileUploadButton)
 
         elif string == 'molecule':
