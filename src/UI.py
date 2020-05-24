@@ -62,7 +62,7 @@ class MainWindow(QMainWindow):
     def fileUpload(self):
         filename = QFileDialog.getOpenFileName(self, 'Open File', '../imgs/', "Images (*.png *.xpm *.jpg)")
         # 3rd parameter in previous line is default directory to open to
-        stringName = self.elementName.text()#append to array
+        stringName = self.elementName.text() # append to array
         self.array.append(stringName)
         print(stringName)
         if filename:
@@ -82,6 +82,7 @@ class MainWindow(QMainWindow):
         stringName = self.elementName.text()
         img = main.get_image_from_input(text_in, stringName, 2)
         print(img)
+        self.array.append(stringName)
 
     def addPar(self):
         text_in = self.elementInput.text()
@@ -89,6 +90,7 @@ class MainWindow(QMainWindow):
         main.get_image_from_input(text_in, stringName, 3)
         latexTextFile = open("../out/" + stringName + ".txt", "r")
         print(latexTextFile.read())
+        self.array.append(stringName)
 
 
     def addSec(self):
@@ -97,6 +99,7 @@ class MainWindow(QMainWindow):
         main.get_image_from_input(text_in, stringName, 4)
         latexTextFile = open("../out/" + stringName + ".txt", "r")
         print(latexTextFile.read())
+        self.array.append(stringName)
 
     def addSubSec(self):
         text_in = self.elementInput.text()
@@ -104,6 +107,7 @@ class MainWindow(QMainWindow):
         main.get_image_from_input(text_in, stringName, 5)
         latexTextFile = open("../out/" + stringName + ".txt", "r")
         print(latexTextFile.read())
+        self.array.append(stringName)
 
 
 
@@ -112,6 +116,7 @@ class MainWindow(QMainWindow):
         stringName = self.elementName.text()
         img = main.get_image_from_input(text_in, stringName, 0)
         print(img)
+        self.array.append(stringName)
 
 
 
