@@ -231,21 +231,36 @@ class MainWindow(QMainWindow):
             self.elementName = QLineEdit("Name your element! (e.g. Section 1)")
             # self.elementName.setGeometry(0,0,100,100)
             # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+
             self.elementHeaderHBox.addWidget(self.elementName)
             self.elementHeaderHBox.addSpacing(150)
             self.elementBodyStackPane = QStackedLayout(self)
-            self.elementInput = QLineEdit("Type your section name here.")
-            self.elementBodyStackPane.addWidget(self.elementInput)
-
             self.elementVBoxButton = QVBoxLayout(self)
             self.elementSubmitButton = QPushButton('Add Section')
             self.elementSubmitButton.clicked.connect(self.addSec)
-
+            self.elementInput = QLineEdit("Type your paragraph here.")
             self.elementVBoxButton.addWidget(self.elementInput)
             self.elementVBoxButton.addWidget(self.elementSubmitButton)
             self.elementSubmitWidget = QWidget()
             self.elementSubmitWidget.setLayout(self.elementVBoxButton)
             self.elementBodyStackPane.addWidget(self.elementSubmitWidget)
+
+
+            # self.elementHeaderHBox.addWidget(self.elementName)
+            # self.elementHeaderHBox.addSpacing(150)
+            # self.elementBodyStackPane = QStackedLayout(self)
+            # self.elementInput = QLineEdit("Type your section name here.")
+            # self.elementBodyStackPane.addWidget(self.elementInput)
+            #
+            # self.elementVBoxButton = QVBoxLayout(self)
+            # self.elementSubmitButton = QPushButton('Add Section')
+            # self.elementSubmitButton.clicked.connect(self.addSec)
+            #
+            # self.elementVBoxButton.addWidget(self.elementInput)
+            # self.elementVBoxButton.addWidget(self.elementSubmitButton)
+            # self.elementSubmitWidget = QWidget()
+            # self.elementSubmitWidget.setLayout(self.elementVBoxButton)
+            # self.elementBodyStackPane.addWidget(self.elementSubmitWidget)
 
         else:
             self.elementName = QLineEdit("Name your element! (e.g. Subsection 3.4)")
