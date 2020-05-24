@@ -290,7 +290,7 @@ class MainWindow(QMainWindow):
 
         self.homeFormattingVBox = QVBoxLayout(self)
         self.homeFormattingVBox.addWidget(self.homeAppText)
-        self.homeFormattingVBox.addSpacing(500)
+        self.homeFormattingVBox.addSpacing(50)
 
         self.homeVBox.addLayout(self.homeHBox)
         self.homeV2Box.addWidget(self.homeAppName)
