@@ -66,7 +66,7 @@ class MainWindow(QMainWindow):
         stringName = self.elementName.text()
         print(stringName)
         if filename:
-            img = main.get_image_from_input(str(filename[0]), stringName, 1) #how do I get the element name of the image into here?
+            img = main.get_image_from_input(str(filename[0]), stringName, 1)
 
         # get rid of the file upload button
 
@@ -80,20 +80,26 @@ class MainWindow(QMainWindow):
     def addPar(self):
         text_in = self.elementInput.text()
         stringName = self.elementName.text()
-        img = main.get_image_from_input(text_in, stringName, 3)
-        print(img)
+        main.get_image_from_input(text_in, stringName, 3)
+        latexTextFile = open("../out/" + stringName + ".txt", "r")
+        print(latexTextFile.read())
+
 
     def addSec(self):
         text_in = self.elementInput.text()
         stringName = self.elementName.text()
-        img = main.get_image_from_input(text_in, stringName, 4)
-        print(img)
+        main.get_image_from_input(text_in, stringName, 4)
+        latexTextFile = open("../out/" + stringName + ".txt", "r")
+        print(latexTextFile.read())
 
     def addSubSec(self):
         text_in = self.elementInput.text()
         stringName = self.elementName.text()
-        img = main.get_image_from_input(text_in, stringName, 5)
-        print(img)
+        main.get_image_from_input(text_in, stringName, 5)
+        latexTextFile = open("../out/" + stringName + ".txt", "r")
+        print(latexTextFile.read())
+
+
 
     def submitMath(self):
         text_in = self.elementInput.text()
