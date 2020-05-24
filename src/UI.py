@@ -69,6 +69,7 @@ class MainWindow(QMainWindow):
 
         # get rid of the file upload button
 
+<<<<<<< HEAD
     def submitChem(self):
         text_in = self.elementInput.text()
         stringName = self.elementName.text()
@@ -93,6 +94,9 @@ class MainWindow(QMainWindow):
         text_in = self.elementInput.text()
         stringName = self.elementName.text()
         img = main.get_image_from_input(text_in, stringName, 0)
+=======
+
+>>>>>>> 7146db9af90ee7b24d6cf03ceb33a6ca33084f35
 
     def newFileScreen(self):
         self.stackPane.setCurrentIndex(1)
@@ -362,11 +366,11 @@ class MainWindow(QMainWindow):
         }
 
         """)
-        self.homeAppText.setFont(QFont("Times", 24, QFont.Bold))
+        self.homeAppText.setFont(QFont("Times", 20, QFont.Bold))
 
         self.homeFormattingVBox = QVBoxLayout(self)
         self.homeFormattingVBox.addWidget(self.homeAppText)
-        self.homeFormattingVBox.addSpacing(500)
+        self.homeFormattingVBox.addSpacing(50)
 
         self.homeVBox.addLayout(self.homeHBox)
         self.homeV2Box.addWidget(self.homeAppName)
