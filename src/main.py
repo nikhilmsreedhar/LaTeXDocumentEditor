@@ -87,6 +87,6 @@ def export(file_names, project_name):
 # get_image_from_input("../imgs/quad.png", "equation3", 1)
 # get_image_from_input("angelic acid", "mol1", 2)
 
-file_names = ["header", "equation1", "equation2", "mol1", "equation3", "footer"]
+# file_names = ["header", "equation1", "equation2", "mol1", "equation3", "footer"]
 
-export(file_names, "bruh_project")
+# export(file_names, "bruh_project")

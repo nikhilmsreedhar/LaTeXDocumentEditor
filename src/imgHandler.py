@@ -2,6 +2,7 @@
 import sys
 from sympy import symbols, preview, Symbol
 import io
+import pyglet
 import base64
 import requests
 import json

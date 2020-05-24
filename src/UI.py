@@ -5,6 +5,7 @@ from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 from PIL import Image
+import io
 import main
 
 # Subclass QMainWindow to customise your application's main window
@@ -58,11 +59,11 @@ class MainWindow(QMainWindow):
 
 
     def fileUpload(self):
-        filename = QFileDialog.getOpenFileName(self, 'Open File', '.', "Images (*.png *.xpm *.jpg)")
+        filename = QFileDialog.getOpenFileName(self, 'Open File', '../imgs/', "Images (*.png *.xpm *.jpg)")
         # 3rd parameter in previous line is default directory to open to
 
         print(filename)
-        img = main.get_image_from_input(str(filename[0]), self.elementName, 1) #how do I get the element name of the image into here?
+        img = main.get_image_from_input(str(filename[0]), "test_oog", 1) #how do I get the element name of the image into here?
         print (img)
 
         # get rid of the file upload button
