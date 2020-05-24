@@ -31,21 +31,18 @@ def get_image_from_input(text_in, el_name, choice):
         imgHandler.write_latex_eq_to_txt(resolved_latex, el_name)
 
         # Return rendered PNG of LaTeX for Display
-        return imgHandler.latex_to_png("../out/" + el_name + ".txt")
+        return imgHandler.latex_to_png("../out/" + el_name + ".txt", el_name)
 
     elif choice == 1:
         # Use Image File from User to get Raw LaTeX
         math_pix_json = imgHandler.img_to_json(text_in)
         raw_latex = imgHandler.json_to_latex(math_pix_json)
 
-        # Crop solution from LaTeX based on input
-        resolved_latex = imgHandler.latex_cropper(text_in, raw_latex)
-
         # Write LaTeX equation to text with necessary wrapper
-        imgHandler.write_latex_eq_to_txt(resolved_latex, el_name)
+        imgHandler.write_latex_eq_to_txt(raw_latex, el_name)
 
         # Return rendered PNG of LaTeX for Display
-        return imgHandler.latex_to_png(resolved_latex)
+        return imgHandler.latex_to_png("../out/" + el_name + ".txt", el_name)
 
     elif choice == 2:
         # Use text input from User to get PNG from PubChem
@@ -66,5 +63,6 @@ def export(file_names, project_name):
     # fileConversions.generate_pdf(file_name)
 
 
-get_image_from_input("integral from 0 to 1 of x^3 dx", "equation1", 0)
-
+# get_image_from_input("integral from 0 to 1 of x^3 dx", "equation1", 0)
+# get_image_from_input("../imgs/IMG_8642.jpg", "equation2", 1)
+get_image_from_input("../imgs/quad.png", "equation3", 1)
