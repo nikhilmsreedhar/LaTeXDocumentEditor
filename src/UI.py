@@ -72,12 +72,12 @@ class MainWindow(QMainWindow):
 
 
     #convert the strings to json then saving the file locally
-    def convertToJson(self):
+    def convertToJson():
         dictionary = {}
         for x in range(len(self.array))
             dictionary.update(x, self.array[x])
-        with open("project_data.json", "w") as write_file:
-            json.dump(dictionary, write_file)
+        j = json.dumps(dictionary)
+        with open()
 
 
     def submitChem(self):
@@ -115,6 +115,7 @@ class MainWindow(QMainWindow):
         stringName = self.elementName.text()
         img = main.get_image_from_input(text_in, stringName, 0)
         print(img)
+>>>>>>> 9eb8b9a08d126d13307511a29a64602c98dc446b
 
 
     def newFileScreen(self):
