@@ -37,7 +37,8 @@ def latex_to_png(latex_file_name, element_name):
     latex = handle.readline()
     handle.close()
 
-    preamble = "\\documentclass[a4paper, 12pt, titlepage, legno]{article}\n" \
+    preamble = "\\documentclass{article}\n" \
+                "\\thispagestyle{empty}\n" \
                "\\usepackage[english]{babel}\n" \
                "\\usepackage[a4paper, inner=1.25in, outer=1.25in, top=1.25in, bottom = 1.25in]{geometry}\n" \
                "\\usepackage{amsmath}\n" \
@@ -53,7 +54,7 @@ def latex_to_png(latex_file_name, element_name):
     new_line_index = latex.find('\n')
     latex = latex[0:new_line_index]
     latex = "$$" + latex + "$$"
-
+    print(latex)
     preview(latex, output='png', viewer='file', filename='../out/' + element_name + '.png', euler=False, preamble=preamble)
     img = Image.open('../out/' + element_name + '.png')
     return img
