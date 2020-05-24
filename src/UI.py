@@ -69,7 +69,7 @@ class MainWindow(QMainWindow):
 
         # get rid of the file upload button
 
-    
+
 
     def newFileScreen(self):
         self.stackPane.setCurrentIndex(1)
@@ -297,7 +297,7 @@ class MainWindow(QMainWindow):
         }
 
         """)
-        self.homeAppText.setFont(QFont("Times", 24, QFont.Bold))
+        self.homeAppText.setFont(QFont("Times", 20, QFont.Bold))
 
         self.homeFormattingVBox = QVBoxLayout(self)
         self.homeFormattingVBox.addWidget(self.homeAppText)
