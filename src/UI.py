@@ -9,7 +9,6 @@ from PySide2.QtCore import *
 
 # Subclass QMainWindow to customise your application's main window
 class MainWindow(QMainWindow):
-
     def mainScreen(self):
         print('bruh')
         self.stackPane.setCurrentIndex(0)
@@ -44,6 +43,7 @@ class MainWindow(QMainWindow):
         HOME PAGE UI CODE
         """
         self.setWindowTitle("APP NAME")
+        self.setStyleSheet('background-color: rgb(255, 230, 232)')
         self.homeHBox = QHBoxLayout(self)
         self.homeVBox = QVBoxLayout(self)
         self.homeV2Box = QVBoxLayout(self)
@@ -101,7 +101,7 @@ class MainWindow(QMainWindow):
 
         self.homeVBox.addLayout(self.homeHBox)
         self.homeV2Box.addWidget(self.homeAppName)
-        self.homeHBox.addSpacing(100)
+        self.homeHBox.addSpacing(1)
         self.homeV2Box.addLayout(self.homeFormatingVBox)
         self.homeHBox.addLayout(self.homeV2Box)
         self.homeVBox.addLayout(self.homeH2Box)
