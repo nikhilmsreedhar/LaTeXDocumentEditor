@@ -69,6 +69,8 @@ class MainWindow(QMainWindow):
 
         # get rid of the file upload button
 
+    
+
     def newFileScreen(self):
         self.stackPane.setCurrentIndex(1)
         for x in range(self.mainPreviewVBox.count()):
@@ -91,7 +93,14 @@ class MainWindow(QMainWindow):
             self.elementHeaderHBox.addWidget(self.elementName)
             self.elementHeaderHBox.addSpacing(150)
             self.elementBodyStackPane = QStackedLayout(self)
-            self.elementBodyStackPane.addWidget(QLineEdit("Type your equation here in natural language (e.g. integral of x^3 dx)."))
+            self.elementVBoxButton = QVBoxLayout(self)
+            self.elementSubmitButton = QPushButton('Add Math')
+            self.elementVBoxButton.addWidget(QLineEdit("Type your equation here in natural language (e.g. integral of x^3 dx)."))
+            self.elementVBoxButton.addWidget(self.elementSubmitButton)
+            self.elementSubmitWidget = QWidget()
+            self.elementSubmitWidget.setLayout(self.elementVBoxButton)
+            self.elementBodyStackPane.addWidget(self.elementSubmitWidget)
+
 
 
 
@@ -108,6 +117,8 @@ class MainWindow(QMainWindow):
             self.fileUploadButton.setFont(QFont("Times", 12))
             self.fileUploadButton.clicked.connect(self.fileUpload)
             self.elementBodyStackPane.addWidget(self.fileUploadButton)
+            self.elementOptionsHBox = QHBoxLayout()
+            self.elementImage = QPixmap()
 
         elif string == 'molecule':
             self.elementName = QLineEdit("Name your element! (e.g. Glucose Molecule)")
@@ -276,7 +287,7 @@ class MainWindow(QMainWindow):
             }
         """)
 
-        self.homeAppText = QLabel("A easy way to create pretty LaTeX documents with great support for chemical molecules, chemical equations, mathematical symbols, tables, and other mathematical equations. Everything will be formatted appropriately in LaTeX, and the best part is you don't even need know LaTeX! This application will handle all the behind-the-scenes LaTeX using your convenient input. Add an element by simply clicking insert and choosing one of the input options. For equations, both mathematical and chemical, you have the choice of typing them out in natural language or uploading a picture of the handwritten [or digitally-drawn] equation. Ez LaTeX will interpret the equation and translate it to LaTeX for you, dislaying a nice preview of what it will look like in the final PDF. If you wish to include a molecule diagram, simply select that option and type in the name of the molecule. Ez LaTeX will handle the rest. ")
+        self.homeAppText = QLabel("A easy way to create pretty LaTeX documents with great support for chemical molecules, chemical equations, mathematical symbols, tables, and other mathematical equations. Everything will be formatted appropriately in LaTeX, and the best part is you don't even need know LaTeX! This application will handle all the behind-the-scenes LaTeX using your convenient input. Add an element by simply clicking insert and choosing one of the input options. For equations, both mathematical and chemical, you have the choice of typing them out in natural language or uploading a picture of the handwritten [or digitally-drawn] equation. EzLaTeX will interpret the equation and translate it to LaTeX for you, dislaying a nice preview of what it will look like in the final PDF. If you wish to include a molecule diagram, simply select that option and type in the name of the molecule. EzLaTeX will handle the rest. ")
         self.homeAppText.setWordWrap(True)
         self.homeAppText.setStyleSheet("""
         QWidget {
