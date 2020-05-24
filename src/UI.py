@@ -210,23 +210,14 @@ class MainWindow(QMainWindow):
             self.elementName = QLineEdit("Name your element! (e.g. Section 1)")
             # self.elementName.setGeometry(0,0,100,100)
             # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+            print("")
             self.elementHeaderHBox.addWidget(self.elementName)
             self.elementHeaderHBox.addSpacing(150)
             self.elementBodyStackPane = QStackedLayout(self)
-<<<<<<< HEAD
             self.elementVBoxButton = QVBoxLayout(self)
             self.elementSubmitButton = QPushButton('Add Section')
             self.elementSubmitButton.clicked.connect(self.addSec)
             self.elementInput = QLineEdit("Type your paragraph here.")
-=======
-            self.elementInput = QLineEdit("Type your section name here.")
-            self.elementBodyStackPane.addWidget(self.elementInput)
-
-            self.elementVBoxButton = QVBoxLayout(self)
-            self.elementSubmitButton = QPushButton('Add Section')
-            self.elementSubmitButton.clicked.connect(self.addSec)
-
->>>>>>> 9d79a13eec352fda70147ab8a6e77d26fafbddcc
             self.elementVBoxButton.addWidget(self.elementInput)
             self.elementVBoxButton.addWidget(self.elementSubmitButton)
             self.elementSubmitWidget = QWidget()
@@ -240,20 +231,10 @@ class MainWindow(QMainWindow):
             self.elementHeaderHBox.addWidget(self.elementName)
             self.elementHeaderHBox.addSpacing(150)
             self.elementBodyStackPane = QStackedLayout(self)
-<<<<<<< HEAD
             self.elementVBoxButton = QVBoxLayout(self)
             self.elementSubmitButton = QPushButton('Add Subsection')
             self.elementSubmitButton.clicked.connect(self.addSubSec)
             self.elementInput = QLineEdit("Type your subsection name here.")
-=======
-            self.elementInput = QLineEdit("Type your subsection name here.")
-            self.elementBodyStackPane.addWidget(self.elementInput)
-
-            self.elementVBoxButton = QVBoxLayout(self)
-            self.elementSubmitButton = QPushButton('Add Section')
-            self.elementSubmitButton.clicked.connect(self.addSubSec)
-
->>>>>>> 9d79a13eec352fda70147ab8a6e77d26fafbddcc
             self.elementVBoxButton.addWidget(self.elementInput)
             self.elementVBoxButton.addWidget(self.elementSubmitButton)
             self.elementSubmitWidget = QWidget()
