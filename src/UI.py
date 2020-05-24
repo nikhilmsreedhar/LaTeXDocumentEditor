@@ -1,4 +1,5 @@
 import sys
+import PySide2
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 from PySide2.QtCore import *
@@ -21,16 +22,32 @@ class MainWindow(QMainWindow):
         maxElements = 10
         print('meme')
         elementList = []
-        for x in range(self.mainPreviewVBox.count()):
-            elementList.append(self.mainPreviewVBox.itemAt(x))
-        print(str(elementList))
-        self.mainPreviewVBox = QVBoxLayout()
-        for x in range(len(elementList)):
-            self.mainPreviewVBox.addSpacing(75)
-            self.mainPreviewVBox.addWidget(elementList[x])
-        self.mainPreviewVBox.addSpacing(75)
+        num = self.mainPreviewVBox.count()
+        if num > 0:
+            self.mainPreviewVBox.itemAt(num - 1).changeSize(0,0)
+
+        self.mainPreviewVBox.addSpacing(50)
         self.mainPreviewVBox.addWidget(QLabel('hello'))
         self.mainPreviewVBox.addSpacing((maxElements - len(elementList) + 1) * 100)
+
+        # for x in range(self.mainPreviewVBox.count()):
+        #     if not isinstance(elementList[x], PySide2.QtWidgets.QSpacerItem):
+        #         elementList.append(self.mainPreviewVBox.itemAt(x))
+        # print(str(elementList))
+        #
+        # for x in range(self.mainPreviewVBox.count()):
+        #     if isinstance(elementList[x], PySide2.QtWidgets.QSpacerItem):
+        #         elementList[x].changeSize(0,0)
+        #         print('lmao')
+        #
+        #
+        #
+        # for x in range(len(elementList)):
+        #     self.mainPreviewVBox.addSpacing(75)
+        #     self.mainPreviewVBox.addWidget(elementList[x])
+        # self.mainPreviewVBox.addSpacing(75)
+        # self.mainPreviewVBox.addWidget(QLabel('hello'))
+        # self.mainPreviewVBox.addSpacing((maxElements - len(elementList) + 1) * 100)
         # self.mainPreviewVBox.addWidget(QLabel('hello'))
 
 
