@@ -21,7 +21,8 @@ class MainWindow(QMainWindow):
                 self.mainPreviewVBox.removeItem(self.mainPreviewVBox.itemAt(y))
                 # y += 1
             else:
-                self.mainPreviewVBox.removeWidget(self.mainPreviewVBox.itemAt(y).widget())
+                self.mainPreviewVBox.itemAt(y).widget().hide()
+                #self.mainPreviewVBox.removeWidget(self.mainPreviewVBox.itemAt(y).widget())
 
         print(self.mainPreviewVBox.count())
         self.mainPreviewVBox.activate()
