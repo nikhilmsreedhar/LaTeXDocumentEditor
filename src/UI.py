@@ -33,7 +33,7 @@ class MainWindow(QMainWindow):
     def save(self):
         print("saveee")
 
-    def export(self):
+    def export():
         print("exporttt")
 
 
@@ -66,8 +66,8 @@ class MainWindow(QMainWindow):
 
         self.homeNewFileButton = QPushButton("New File")
         self.homeNewFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.homeNewFileButton.clicked.connect(self.newFileScreen)
         self.homeNewFileButton.setCursor(QCursor(Qt.PointingHandCursor))
+        self.homeNewFileButton.clicked.connect(self.newFileScreen)
         self.homeH2Box.addWidget(self.homeNewFileButton)
         self.homeNewFileButton.setStyleSheet("""
         QWidget {
@@ -78,8 +78,8 @@ class MainWindow(QMainWindow):
 
         self.homeOpenFileButton = QPushButton("Open File")
         self.homeOpenFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.homeOpenFileButton.setFont(QFont("Times", 36, QFont.Bold))
         self.homeOpenFileButton.setCursor(QCursor(Qt.PointingHandCursor))
+        self.homeOpenFileButton.setFont(QFont("Times", 36, QFont.Bold))
         self.homeH2Box.addWidget(self.homeOpenFileButton)
         self.homeOpenFileButton.setStyleSheet("""
         QWidget {
@@ -125,38 +125,23 @@ class MainWindow(QMainWindow):
         self.mainSaveAction = QAction('&Save')
         self.mainSaveAction.triggered.connect(self.save)
 
+        # self.mainFileMenuBar = QMenuBar()
+        # self.mainFileMenu = self.mainFileMenuBar.addMenu('&File')
+        # self.mainFileMenu.addAction(self.mainHomeAction)
 
-        #setting up menu drop down for file
+
         self.mainFileButton = QPushButton("File")
-        self.mainFileButton.setCursor(QCursor(Qt.PointingHandCursor))
         self.mainFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        self.mainFileButton.setCursor(QCursor(Qt.PointingHandCursor))
         self.mainFileButton.setMenu(QMenu(self.mainFileButton))
         self.mainFileButton.menu().addAction(self.mainHomeAction)
         self.mainFileButton.menu().addAction(self.mainSaveAction)
         self.mainFileButton.menu().addAction(self.mainExportAction)
 
-        self.mainHomeAction = QAction('&Type a Math Equation')
-        self.mainHomeAction.triggered.connect(self.mainScreen)
-
-        self.mainExportAction = QAction('&Picture of Math Equation')
-        self.mainExportAction.triggered.connect(self.export)
-
-        self.mainSaveAction = QAction('&Molecule')
-        self.mainSaveAction.triggered.connect(self.save)
-
-        self.mainSaveAction = QAction('&Paragraph Text')
-        self.mainSaveAction.triggered.connect(self.save)
-
-        self.mainSaveAction = QAction('&Section Heading')
-        self.mainSaveAction.triggered.connect(self.save)
-
-        self.mainSaveAction = QAction('&Subsection Heading')
-        self.mainSaveAction.triggered.connect(self.save)
-
         self.mainInsertButton = QPushButton("Insert")
-        self.mainInsertButton.setCursor(QCursor(Qt.PointingHandCursor))
         self.mainInsertButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-        # self.mainInsertButton.setMenu(QMenu(self.))
+        self.mainInsertButton.setCursor(QCursor(Qt.PointingHandCursor))
+        self.mainInsertButton.clicked.connect(self.insertElement)
 
         self.mainTabHBox.addWidget(self.mainFileButton)
         self.mainTabHBox.addWidget(self.mainInsertButton)
@@ -206,7 +191,57 @@ class MainWindow(QMainWindow):
         self.widget = QWidget()
         self.widget.setLayout(self.stackPane)
 
+
+        # self.setLayout(self.hBox)
+        # self.homePage = HomePageWidget(self)
+
+        # Set the central widget of the Window. Widget will expand
+        # to take up all the space in the window by default.
         self.setCentralWidget(self.widget)
+
+# class HomePageWidget(QWidget):
+#     def onPushNewFile(parent):
+#         print('hello')
+#         parent.hide()
+#
+#
+#
+#
+#     def __init__(self, parent):
+#         super(HomePageWidget, self).__init__(parent)
+#         self.hBox = QHBoxLayout(self)
+#         self.vBox = QVBoxLayout(self)
+#
+#         self.label = QLabel("App Name")
+#         self.label.setFont(QFont("Times", 36, QFont.Bold))
+#         self.label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+#         self.vBox.addWidget(self.label)
+#
+#         self.button1 = QPushButton("Home")
+#         self.button1.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+#         self.vBox.addWidget(self.button1)
+#
+#         self.button2 = QPushButton("New File")
+#         self.button2.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+#         self.button2.clicked.connect(self.onPushNewFile)
+#         self.vBox.addWidget(self.button2)
+#
+#         self.button3 = QPushButton("Open File")
+#         self.button3.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+#         self.vBox.addWidget(self.button3)
+#
+#         self.hBox.addLayout(self.vBox)
+#         self.hBox.addStretch()
+#         self.hBox.addStretch()
+#         self.hBox.addStretch()
+#         self.hBox.addStretch()
+#         self.hBox.addStretch()
+#         self.hBox.addStretch()
+#         self.hBox.addStretch()
+#         self.hBox.addStretch()
+#
+#
+#         self.setLayout(self.hBox)
 
 
 app = QApplication(sys.argv)
