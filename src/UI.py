@@ -67,6 +67,7 @@ class MainWindow(QMainWindow):
         self.homeNewFileButton = QPushButton("New File")
         self.homeNewFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.homeNewFileButton.clicked.connect(self.newFileScreen)
+        self.homeNewFileButton.setCursor(QCursor(Qt.PointingHandCursor))
         self.homeH2Box.addWidget(self.homeNewFileButton)
         self.homeNewFileButton.setStyleSheet("""
         QWidget {
@@ -78,6 +79,7 @@ class MainWindow(QMainWindow):
         self.homeOpenFileButton = QPushButton("Open File")
         self.homeOpenFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.homeOpenFileButton.setFont(QFont("Times", 36, QFont.Bold))
+        self.homeOpenFileButton.setCursor(QCursor(Qt.PointingHandCursor))
         self.homeH2Box.addWidget(self.homeOpenFileButton)
         self.homeOpenFileButton.setStyleSheet("""
         QWidget {
@@ -123,11 +125,8 @@ class MainWindow(QMainWindow):
         self.mainSaveAction = QAction('&Save')
         self.mainSaveAction.triggered.connect(self.save)
 
-        # self.mainFileMenuBar = QMenuBar()
-        # self.mainFileMenu = self.mainFileMenuBar.addMenu('&File')
-        # self.mainFileMenu.addAction(self.mainHomeAction)
 
-
+        #setting up menu drop down for file
         self.mainFileButton = QPushButton("File")
         self.mainFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         self.mainFileButton.setMenu(QMenu(self.mainFileButton))
@@ -135,9 +134,27 @@ class MainWindow(QMainWindow):
         self.mainFileButton.menu().addAction(self.mainSaveAction)
         self.mainFileButton.menu().addAction(self.mainExportAction)
 
+        self.mainHomeAction = QAction('&Type a Math Equation')
+        self.mainHomeAction.triggered.connect(self.mainScreen)
+
+        self.mainExportAction = QAction('&Picture of Math Equation')
+        self.mainExportAction.triggered.connect(self.export)
+
+        self.mainSaveAction = QAction('&Molecule')
+        self.mainSaveAction.triggered.connect(self.save)
+
+        self.mainSaveAction = QAction('&Paragraph Text')
+        self.mainSaveAction.triggered.connect(self.save)
+
+        self.mainSaveAction = QAction('&Section Heading')
+        self.mainSaveAction.triggered.connect(self.save)
+
+        self.mainSaveAction = QAction('&Subsection Heading')
+        self.mainSaveAction.triggered.connect(self.save)
+
         self.mainInsertButton = QPushButton("Insert")
         self.mainInsertButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-        self.mainInsertButton.clicked.connect(self.insertElement)
+        # self.mainInsertButton.setMenu(QMenu(self.))
 
         self.mainTabHBox.addWidget(self.mainFileButton)
         self.mainTabHBox.addWidget(self.mainInsertButton)
