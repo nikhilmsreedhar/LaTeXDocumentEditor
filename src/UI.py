@@ -48,6 +48,8 @@ class MainWindow(QMainWindow):
         self.homeVBox = QVBoxLayout(self)
         self.homeV2Box = QVBoxLayout(self)
         self.homeH2Box = QHBoxLayout(self)
+        self.homeH2Box.setSpacing(0)
+
 
         self.homeAppName = QLabel("App Name")
         self.homeAppName.setFont(QFont("Times", 36, QFont.Bold))
@@ -60,8 +62,10 @@ class MainWindow(QMainWindow):
         self.homeHomeButton.setFont(QFont("Times", 36, QFont.Bold))
         self.homeHomeButton.setStyleSheet("""
         QWidget {
-            border: 0.5px solid gray;
+            border: 0.1px solid gray;
             background-color: rgb(173, 216, 230);
+            padding-right: 0px;
+
             }
         """)
 
@@ -75,8 +79,10 @@ class MainWindow(QMainWindow):
         self.homeH2Box.addWidget(self.homeNewFileButton)
         self.homeNewFileButton.setStyleSheet("""
         QWidget {
-            border: 0.5px solid gray;
+            border: 0.1px solid gray;
             background-color: rgb(173, 216, 230);
+            padding-right: 0px;
+            padding-left: 0px;
             }
         """)
 
@@ -87,8 +93,9 @@ class MainWindow(QMainWindow):
         self.homeH2Box.addWidget(self.homeOpenFileButton)
         self.homeOpenFileButton.setStyleSheet("""
         QWidget {
-            border: 0.5px solid gray;
+            border: 0.1px solid gray;
             background-color: rgb(173, 216, 230);
+            padding-left: 0px;
             }
         """)
 
