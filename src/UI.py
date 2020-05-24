@@ -43,6 +43,8 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("APP NAME")
         self.homeHBox = QHBoxLayout(self)
         self.homeVBox = QVBoxLayout(self)
+        self.homeV2Box = QVBoxLayout(self)
+        self.homeH2Box = QHBoxLayout(self)
 
         self.homeAppName = QLabel("App Name")
         self.homeAppName.setFont(QFont("Times", 36, QFont.Bold))
@@ -51,16 +53,35 @@ class MainWindow(QMainWindow):
 
         self.homeHomeButton = QPushButton("Home")
         self.homeHomeButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.homeVBox.addWidget(self.homeHomeButton)
+        self.homeH2Box.addWidget(self.homeHomeButton)
+        self.homeHomeButton.setStyleSheet("""
+        QWidget {
+            border: 0.5px solid gray;
+            background-color: rgb(173, 216, 230);
+            }
+        """)
 
         self.homeNewFileButton = QPushButton("New File")
         self.homeNewFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.homeNewFileButton.clicked.connect(self.newFileScreen)
-        self.homeVBox.addWidget(self.homeNewFileButton)
+        self.homeH2Box.addWidget(self.homeNewFileButton)
+        self.homeNewFileButton.setStyleSheet("""
+        QWidget {
+            border: 0.5px solid gray;
+            background-color: rgb(173, 216, 230);
+            }
+        """)
 
         self.homeOpenFileButton = QPushButton("Open File")
         self.homeOpenFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.homeVBox.addWidget(self.homeOpenFileButton)
+        self.homeOpenFileButton.setFont(QFont("Times", 36, QFont.Bold))
+        self.homeH2Box.addWidget(self.homeOpenFileButton)
+        self.homeOpenFileButton.setStyleSheet("""
+        QWidget {
+            border: 0.5px solid gray;
+            background-color: rgb(173, 216, 230);
+            }
+        """)
 
         self.homeAppText = QLabel("One dollar and eighty-seven cents. That was all. And sixty cents of it was in pennies. Pennies saved one and two at a time by bulldozing the grocer and the vegetable man and the butcher until one’s cheeks burned with the silent imputation of parsimony that such close dealing implied. One dollar and eighty-seven cents. And the next day would be Christmas...jjjjjj jjjjjjjjjj jjjjjjjjjjj jjjjjjj jjjjjjjjjj jjjjj jjjjjj jjjj jjjjj jjjjjjj jjjjj jjjjj jjj jjjL OLO LOL")
         self.homeAppText.setWordWrap(True)
@@ -70,13 +91,16 @@ class MainWindow(QMainWindow):
         self.homeFormatingVBox.addWidget(self.homeAppText)
         self.homeFormatingVBox.addSpacing(500)
 
-        self.homeHBox.addLayout(self.homeVBox)
-        self.homeHBox.addSpacing(300)
-        self.homeHBox.addLayout(self.homeFormatingVBox)
+        self.homeVBox.addLayout(self.homeHBox)
+        self.homeV2Box.addWidget(self.homeAppName)
+        self.homeHBox.addSpacing(100)
+        self.homeV2Box.addLayout(self.homeFormatingVBox)
+        self.homeHBox.addLayout(self.homeV2Box)
+        self.homeVBox.addLayout(self.homeH2Box)
 
 
         self.homeWidget = QWidget()
-        self.homeWidget.setLayout(self.homeHBox)
+        self.homeWidget.setLayout(self.homeVBox)
         """
         END OF HOME PAGE UI
         """
