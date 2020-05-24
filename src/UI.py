@@ -63,7 +63,7 @@ class MainWindow(QMainWindow):
     def fileUpload(self):
         filename = QFileDialog.getOpenFileName(self, 'Open File', '../imgs/', "Images (*.png *.xpm *.jpg)")
         # 3rd parameter in previous line is default directory to open to
-        stringName = self.elementName.text()#append to array
+        stringName = self.elementName.text() # append to array
         self.array.append(stringName)
         print(stringName)
         if filename:
@@ -73,9 +73,12 @@ class MainWindow(QMainWindow):
         # get rid of the file upload button
         self.elementBodyStackPane.setCurrentIndex(1)
         # get rid of the file upload button
-
-
-
+    def convertToJson(self):
+        dictionary = {}
+        for x in range(len(self.array)):
+             dictionary.update(x, self.array[x])
+        with open("project_data.json", "w") as write_file:
+            json.dump(dictionary, write_file)
 
 
     def submitChem(self):
@@ -83,6 +86,7 @@ class MainWindow(QMainWindow):
         stringName = self.elementName.text()
         img = main.get_image_from_input(text_in, stringName, 2)
         print(img)
+        self.array.append(stringName)
 
     def addPar(self):
         text_in = self.elementInput.text()
@@ -90,6 +94,7 @@ class MainWindow(QMainWindow):
         main.get_image_from_input(text_in, stringName, 3)
         latexTextFile = open("../out/" + stringName + ".txt", "r")
         print(latexTextFile.read())
+        self.array.append(stringName)
 
 
     def addSec(self):
@@ -98,6 +103,7 @@ class MainWindow(QMainWindow):
         main.get_image_from_input(text_in, stringName, 4)
         latexTextFile = open("../out/" + stringName + ".txt", "r")
         print(latexTextFile.read())
+        self.array.append(stringName)
 
     def addSubSec(self):
         text_in = self.elementInput.text()
@@ -105,6 +111,7 @@ class MainWindow(QMainWindow):
         main.get_image_from_input(text_in, stringName, 5)
         latexTextFile = open("../out/" + stringName + ".txt", "r")
         print(latexTextFile.read())
+        self.array.append(stringName)
 
 
 
@@ -113,6 +120,7 @@ class MainWindow(QMainWindow):
         stringName = self.elementName.text()
         img = main.get_image_from_input(text_in, stringName, 0)
         print(img)
+        self.array.append(stringName)
 
 
 
@@ -140,7 +148,10 @@ class MainWindow(QMainWindow):
             self.elementBodyStackPane = QStackedLayout(self)
             self.elementVBoxButton = QVBoxLayout(self)
             self.elementSubmitButton = QPushButton('Add Math')
-            self.elementVBoxButton.addWidget(QLineEdit("Type your equation here in natural language (e.g. integral of x^3 dx)."))
+
+            self.elementSubmitButton.clicked.connect(self.submitMath)
+            self.elementInput = QLineEdit("Type your equation here in natural language (e.g. integral of x^3 dx).")
+            self.elementVBoxButton.addWidget(self.elementInput)
             self.elementVBoxButton.addWidget(self.elementSubmitButton)
             self.elementSubmitWidget = QWidget()
             self.elementSubmitWidget.setLayout(self.elementVBoxButton)
@@ -183,7 +194,15 @@ class MainWindow(QMainWindow):
             self.elementHeaderHBox.addWidget(self.elementName)
             self.elementHeaderHBox.addSpacing(150)
             self.elementBodyStackPane = QStackedLayout(self)
-            self.elementBodyStackPane.addWidget(QLineEdit("Type the name of the molecule you want here (e.g. glucose)."))
+            self.elementVBoxButton = QVBoxLayout(self)
+            self.elementSubmitButton = QPushButton('Add Molecule')
+            self.elementSubmitButton.clicked.connect(self.submitChem)
+            self.elementInput = QLineEdit("Type the name of the molecule you want here (e.g. glucose).")
+            self.elementVBoxButton.addWidget(self.elementInput)
+            self.elementVBoxButton.addWidget(self.elementSubmitButton)
+            self.elementSubmitWidget = QWidget()
+            self.elementSubmitWidget.setLayout(self.elementVBoxButton)
+            self.elementBodyStackPane.addWidget(self.elementSubmitWidget)
 
         elif string == 'paragraph':
             self.elementName = QLineEdit("Name your element! (e.g. Paragraph 1)")
@@ -192,7 +211,15 @@ class MainWindow(QMainWindow):
             self.elementHeaderHBox.addWidget(self.elementName)
             self.elementHeaderHBox.addSpacing(150)
             self.elementBodyStackPane = QStackedLayout(self)
-            self.elementBodyStackPane.addWidget(QLineEdit("Type your paragraph here."))
+            self.elementVBoxButton = QVBoxLayout(self)
+            self.elementSubmitButton = QPushButton('Add Paragraph')
+            self.elementSubmitButton.clicked.connect(self.addPar)
+            self.elementInput = QLineEdit("Type your paragraph here.")
+            self.elementVBoxButton.addWidget(self.elementInput)
+            self.elementVBoxButton.addWidget(self.elementSubmitButton)
+            self.elementSubmitWidget = QWidget()
+            self.elementSubmitWidget.setLayout(self.elementVBoxButton)
+            self.elementBodyStackPane.addWidget(self.elementSubmitWidget)
 
         elif string == 'section':
             self.elementName = QLineEdit("Name your element! (e.g. Section 1)")
@@ -201,7 +228,18 @@ class MainWindow(QMainWindow):
             self.elementHeaderHBox.addWidget(self.elementName)
             self.elementHeaderHBox.addSpacing(150)
             self.elementBodyStackPane = QStackedLayout(self)
-            self.elementBodyStackPane.addWidget(QLineEdit("Type your section name here."))
+            self.elementInput = QLineEdit("Type your section name here.")
+            self.elementBodyStackPane.addWidget(self.elementInput)
+
+            self.elementVBoxButton = QVBoxLayout(self)
+            self.elementSubmitButton = QPushButton('Add Section')
+            self.elementSubmitButton.clicked.connect(self.addSec)
+
+            self.elementVBoxButton.addWidget(self.elementInput)
+            self.elementVBoxButton.addWidget(self.elementSubmitButton)
+            self.elementSubmitWidget = QWidget()
+            self.elementSubmitWidget.setLayout(self.elementVBoxButton)
+            self.elementBodyStackPane.addWidget(self.elementSubmitWidget)
 
         else:
             self.elementName = QLineEdit("Name your element! (e.g. Subsection 3.4)")
@@ -211,7 +249,18 @@ class MainWindow(QMainWindow):
             self.elementHeaderHBox.addSpacing(150)
             # string is subsection
             self.elementBodyStackPane = QStackedLayout(self)
-            self.elementBodyStackPane.addWidget(QLineEdit("Type your subsection name here."))
+            self.elementInput = QLineEdit("Type your subsection name here.")
+            self.elementBodyStackPane.addWidget(self.elementInput)
+
+            self.elementVBoxButton = QVBoxLayout(self)
+            self.elementSubmitButton = QPushButton('Add Section')
+            self.elementSubmitButton.clicked.connect(self.addSubSec)
+
+            self.elementVBoxButton.addWidget(self.elementInput)
+            self.elementVBoxButton.addWidget(self.elementSubmitButton)
+            self.elementSubmitWidget = QWidget()
+            self.elementSubmitWidget.setLayout(self.elementVBoxButton)
+            self.elementBodyStackPane.addWidget(self.elementSubmitWidget)
 
         self.elementFinalVBox = QVBoxLayout(self)
 
