@@ -63,17 +63,35 @@ class MainWindow(QMainWindow):
         for x in range(self.mainPreviewVBox.count()):
             print(self.mainPreviewVBox.itemAt(x))
 
-    def insertElement(self):
+    def insertElement(self, string):
         self.save = False
         maxElements = 10
-        elementList = []
         num = self.mainPreviewVBox.count()
         if num > 0:
             self.mainPreviewVBox.itemAt(num - 1).changeSize(0,0)
 
+        self.elementHeaderHBox = QHBoxLayout(self)
+        self.elementName = QLineEdit()
+        # self.elementName.setGeometry(0,0,100,100)
+        # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+        self.elementHeaderHBox.addWidget(self.elementName)
+        self.elementHeaderHBox.addSpacing(1500)
+
+        self.elementBodyStackPane = QStackedLayout(self)
+        self.elementBodyStackPane.addWidget(QLabel(string))
+
+        self.elementFinalVBox = QVBoxLayout(self)
+
+        self.elementFinalVBox.addLayout(self.elementHeaderHBox)
+        self.elementFinalVBox.addLayout(self.elementBodyStackPane)
+
+        self.elementWidget = QWidget()
+        self.elementWidget.setLayout(self.elementFinalVBox)
+
+
         self.mainPreviewVBox.addSpacing(50)
-        self.mainPreviewVBox.addWidget(QLabel('hello'))
-        self.mainPreviewVBox.addSpacing((maxElements - len(elementList) + 1) * 75)
+        self.mainPreviewVBox.addWidget(self.elementWidget)
+        self.mainPreviewVBox.addSpacing(990)
 
     def saveFile(self):
         print("saveee")
@@ -81,6 +99,26 @@ class MainWindow(QMainWindow):
 
     def export(self):
         print("exporttt")
+
+    def typeMath(self):
+        self.insertElement('type math')
+
+    def imageMath(self):
+        self.insertElement('image math')
+
+    def molecule(self):
+        self.insertElement('molecule')
+
+    def paragraph(self):
+        self.insertElement('paragraph')
+
+    def section(self):
+        self.insertElement('section')
+
+    def subsection(self):
+        self.insertElement('subsection')
+
+
 
 
 
@@ -231,10 +269,37 @@ class MainWindow(QMainWindow):
         self.mainFileButton.menu().addAction(self.mainSaveAction)
         self.mainFileButton.menu().addAction(self.mainExportAction)
 
+        self.mainTypeMathAction = QAction('&Type in Equation')
+        self.mainTypeMathAction.triggered.connect(self.typeMath)
+
+        self.mainImageMathAction = QAction('&Image of Equation')
+        self.mainImageMathAction.triggered.connect(self.imageMath)
+
+        self.mainMoleculeAction = QAction('&Type in Molecule Name')
+        self.mainMoleculeAction.triggered.connect(self.molecule)
+
+        self.mainParagraphAction = QAction('&Paragraph Text')
+        self.mainParagraphAction.triggered.connect(self.paragraph)
+
+        self.mainSectionAction = QAction('&Section Header')
+        self.mainSectionAction.triggered.connect(self.section)
+
+        self.mainSubsectionAction = QAction('&Subsection Header')
+        self.mainSubsectionAction.triggered.connect(self.subsection)
+
         self.mainInsertButton = QPushButton("Insert")
         self.mainInsertButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         self.mainInsertButton.setCursor(QCursor(Qt.PointingHandCursor))
-        self.mainInsertButton.clicked.connect(self.insertElement)
+        self.mainInsertButton.setMenu(QMenu(self.mainInsertButton))
+        self.mainInsertButton.menu().addAction(self.mainTypeMathAction)
+        self.mainInsertButton.menu().addAction(self.mainImageMathAction)
+        self.mainInsertButton.menu().addAction(self.mainMoleculeAction)
+        self.mainInsertButton.menu().addAction(self.mainParagraphAction)
+        self.mainInsertButton.menu().addAction(self.mainSectionAction)
+        self.mainInsertButton.menu().addAction(self.mainSubsectionAction)
+        # self.mainInsertButton.clicked.connect(self.insertElement)
+
+
 
         self.mainTabHBox.addWidget(self.mainFileButton)
         self.mainTabHBox.addWidget(self.mainInsertButton)
@@ -260,9 +325,9 @@ class MainWindow(QMainWindow):
         self.mainScroll.setWidgetResizable(True)
 
         self.mainPageSimHBox = QHBoxLayout(self)
-        self.mainPageSimHBox.addSpacing(200)
+        self.mainPageSimHBox.addSpacing(400)
         self.mainPageSimHBox.addWidget(self.mainScroll)
-        self.mainPageSimHBox.addSpacing(200)
+        self.mainPageSimHBox.addSpacing(400)
 
         self.mainVBox.addWidget(self.mainTabWidget)
         # self.mainVBox.addSpacing(10)
