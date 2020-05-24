@@ -70,7 +70,7 @@ class MainWindow(QMainWindow):
 
         # get rid of the file upload button
 
-<<<<<<< HEAD
+
     def submitChem(self):
         text_in = self.elementInput.text()
         stringName = self.elementName.text()
@@ -95,9 +95,7 @@ class MainWindow(QMainWindow):
         text_in = self.elementInput.text()
         stringName = self.elementName.text()
         img = main.get_image_from_input(text_in, stringName, 0)
-=======
 
->>>>>>> 7146db9af90ee7b24d6cf03ceb33a6ca33084f35
 
     def newFileScreen(self):
         self.stackPane.setCurrentIndex(1)
