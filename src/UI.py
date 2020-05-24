@@ -71,7 +71,7 @@ class MainWindow(QMainWindow):
 
         self.elementImage = ImageQt(img)
         # get rid of the file upload button
-        # self.elementBodyStackPane.setCurrentIndex(1)
+        self.elementBodyStackPane.setCurrentIndex(1)
         # get rid of the file upload button
 
 
