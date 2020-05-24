@@ -3,6 +3,7 @@ import sys
 import matplotlib.pyplot as plot
 import sympy
 from sympy import symbols, preview, Symbol
+from IPython.display import Latex
 import io
 import base64
 import requests
@@ -27,6 +28,18 @@ def latex_cropper(text_in, latex):
     return latex
 
 
+def latex_to_what(latex_file_name, element_name):
+    handle = open(latex_file_name, 'r')
+    handle.readline()
+    latex = handle.readline()
+    handle.close()
+
+    # new_line_index = latex.find('\n')
+    # latex = latex[0:new_line_index]
+    # latex = "$$" + latex + "$$"
+
+    Latex(latex)
+
 def latex_to_png(latex_file_name, element_name):
     # backslash_index = latex_file_name.rfind("\\")
     # element_name = latex_file_name[backslash_index:]
@@ -38,11 +51,24 @@ def latex_to_png(latex_file_name, element_name):
     latex = handle.readline()
     handle.close()
 
+    preamble = "\\documentclass[a4paper, 12pt, titlepage, legno]{article}\n" \
+               "\\usepackage[english]{babel}\n" \
+               "\\usepackage[a4paper, inner=1.25in, outer=1.25in, top=1.25in, bottom = 1.25in]{geometry}\n" \
+               "\\usepackage{amsmath}\n" \
+               "\\usepackage{amssymb}\n" \
+               "\\usepackage{amsthm}\n" \
+               "\\usepackage{wasysym}\n" \
+               "\\usepackage{booktabs}\n" \
+               "\\usepackage{array}\n" \
+               "\\usepackage{marvosym}\n" \
+               "\\usepackage{graphicx}\n" \
+               "\\begin{document}"
+
     new_line_index = latex.find('\n')
     latex = latex[0:new_line_index]
     latex = "$$" + latex + "$$"
 
-    preview(latex, output='png', viewer='file', filename='../out/' + element_name + '.png', euler=False)
+    preview(latex, output='png', viewer='file', filename='../out/' + element_name + '.png', euler=False, preamble=preamble)
     img = Image.open('../out/' + element_name + '.png')
     return img
 

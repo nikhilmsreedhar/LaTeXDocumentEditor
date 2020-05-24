@@ -65,6 +65,6 @@ def export(file_names, project_name):
 
 
 # get_image_from_input("integral from 0 to 1 of x^3 dx", "equation1", 0)
-# get_image_from_input("../imgs/IMG_8642.jpg", "equation2", 1)
+get_image_from_input("../imgs/IMG_8642.jpg", "equation2", 1)
 # get_image_from_input("../imgs/quad.png", "equation3", 1)
-get_image_from_input("angelic acid", "mol1", 2)
+# get_image_from_input("angelic acid", "mol1", 2)
