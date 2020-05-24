@@ -246,7 +246,6 @@ class MainWindow(QMainWindow):
             self.elementBodyStackPane = QStackedLayout(self)
             self.elementVBoxButton = QVBoxLayout(self)
             self.elementSubmitButton = QPushButton('Add Section')
-            self.elementSubmitButton.clicked.connect(self.addSec)
 
             self.elementInput = QLineEdit("Type your section name here.")
             # self.elementBodyStackPane.addWidget(self.elementInput)
@@ -270,7 +269,7 @@ class MainWindow(QMainWindow):
             self.elementBodyStackPane = QStackedLayout(self)
             self.elementVBoxButton = QVBoxLayout(self)
             self.elementSubmitButton = QPushButton('Add Subsection')
-            self.elementSubmitButton.clicked.connect(self.addSec)
+
 
             self.elementInput = QLineEdit("Type your Subsection name here.")
             # self.elementBodyStackPane.addWidget(self.elementInput)
