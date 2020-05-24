@@ -9,53 +9,63 @@ from PySide2.QtCore import *
 
 # Subclass QMainWindow to customise your application's main window
 class MainWindow(QMainWindow):
-    saved = False
 
     def mainScreen(self):
-        print('bruh')
+        num = self.mainPreviewVBox.count()
+        print(num)
+        y = 0
+        for x in range(num):
+            # print(y)
+            if isinstance(self.mainPreviewVBox.itemAt(y), PySide2.QtWidgets.QSpacerItem):
+                self.mainPreviewVBox.removeItem(self.mainPreviewVBox.itemAt(y))
+                # y += 1
+            else:
+                self.mainPreviewVBox.removeWidget(self.mainPreviewVBox.itemAt(y).widget())
+        print(self.mainPreviewVBox.count())
+        self.mainPreviewVBox.activate()
+        self.mainPreviewVBox.addSpacing(1000)
+
         self.stackPane.setCurrentIndex(0)
 
     def dlgAccept(self):
-        self.save()
-
-
-    def dlgReject(self):
+        self.saveFile()
+        self.dlg.close()
         self.mainScreen()
 
+    def dlgReject(self):
+        self.dlg.close()
+        self.mainScreen()
 
     def returnToMainScreen(self):
-        print('bruh')
-        if not MainWindow.saved:
+        if not self.save:
+            self.dlg = QDialog(self)
+            self.dlg.setWindowTitle("Unsaved Changes")
 
-            dlg = QDialog(self)
-            dlg.setWindowTitle("Unsaved Changes")
+            self.mainVerticalLayout = QVBoxLayout(self.dlg)
+            self.questionGroupBox = QLabel("Do you want to close without saving?")
+            self.mainVerticalLayout.addWidget(self.questionGroupBox)
 
-            mainVerticalLayout = QVBoxLayout(dlg)
-            questionGroupBox = QLabel("Do you want to close without saving?")
-            mainVerticalLayout.addWidget(questionGroupBox)
+            self.buttonBox = QDialogButtonBox()
+            self.buttonBox.setStandardButtons(QDialogButtonBox.Save | QDialogButtonBox.Close)
+            self.buttonBox.button(QDialogButtonBox.Save).clicked.connect(self.dlgAccept)
+            self.buttonBox.button(QDialogButtonBox.Close).clicked.connect(self.dlgReject)
+            self.mainVerticalLayout.addWidget(self.buttonBox)
 
-            buttonBox = QDialogButtonBox()
-            buttonBox.setStandardButtons(QDialogButtonBox.Save | QDialogButtonBox.Close)
-            buttonBox.button(QDialogButtonBox.Save).clicked.connect(self.dlgAccept)
-            buttonBox.button(QDialogButtonBox.Close).clicked.connect(self.dlgReject)
-            mainVerticalLayout.addWidget(buttonBox)
-            #dlg.HBox = QHBoxLayout()
-            #dlg.HBox.addWidget(QDialogButtonBox.Yes | QDialogButtonBox.No)
-            #dlg.HBox.addWidget(QDialogButtonBox.Yes)
-            #dlg.HBox.addWidget(QDialogButtonBox.No)
-            dlg.setWindowModality(Qt.ApplicationModal)
-            dlg.exec_()
-            
+            self.dlg.setWindowModality(Qt.ApplicationModal)
+            self.dlg.exec_()
+        else:
+            self.mainScreen()
+
 
 
     def newFileScreen(self):
-        print('hello')
         self.stackPane.setCurrentIndex(1)
+        for x in range(self.mainPreviewVBox.count()):
+            print(self.mainPreviewVBox.itemAt(x))
 
     def insertElement(self):
-        saved = False
+        self.save = False
         maxElements = 10
-        print('meme')
         elementList = []
         num = self.mainPreviewVBox.count()
         if num > 0:
@@ -65,9 +75,9 @@ class MainWindow(QMainWindow):
         self.mainPreviewVBox.addWidget(QLabel('hello'))
         self.mainPreviewVBox.addSpacing((maxElements - len(elementList) + 1) * 75)
 
-    def save(self):
+    def saveFile(self):
         print("saveee")
-        saved = True
+        self.save = True
 
     def export(self):
         print("exporttt")
@@ -76,6 +86,7 @@ class MainWindow(QMainWindow):
 
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
+        self.save = True
         """
         HOME PAGE UI CODE
         """
@@ -200,7 +211,7 @@ class MainWindow(QMainWindow):
         self.mainExportAction.triggered.connect(self.export)
 
         self.mainSaveAction = QAction('&Save')
-        self.mainSaveAction.triggered.connect(self.save)
+        self.mainSaveAction.triggered.connect(self.saveFile)
 
         # self.mainFileMenuBar = QMenuBar()
         # self.mainFileMenu = self.mainFileMenuBar.addMenu('&File')
@@ -243,9 +254,9 @@ class MainWindow(QMainWindow):
         self.mainScroll.setWidgetResizable(True)
 
         self.mainPageSimHBox = QHBoxLayout(self)
-        self.mainPageSimHBox.addSpacing(600)
+        self.mainPageSimHBox.addSpacing(200)
         self.mainPageSimHBox.addWidget(self.mainScroll)
-        self.mainPageSimHBox.addSpacing(600)
+        self.mainPageSimHBox.addSpacing(200)
 
         self.mainVBox.addWidget(self.mainTabWidget)
         # self.mainVBox.addSpacing(10)
@@ -276,49 +287,6 @@ class MainWindow(QMainWindow):
         # to take up all the space in the window by default.
         self.setCentralWidget(self.widget)
 
-# class HomePageWidget(QWidget):
-#     def onPushNewFile(parent):
-#         print('hello')
-#         parent.hide()
-#
-#
-#
-#
-#     def __init__(self, parent):
-#         super(HomePageWidget, self).__init__(parent)
-#         self.hBox = QHBoxLayout(self)
-#         self.vBox = QVBoxLayout(self)
-#
-#         self.label = QLabel("App Name")
-#         self.label.setFont(QFont("Times", 36, QFont.Bold))
-#         self.label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-#         self.vBox.addWidget(self.label)
-#
-#         self.button1 = QPushButton("Home")
-#         self.button1.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-#         self.vBox.addWidget(self.button1)
-#
-#         self.button2 = QPushButton("New File")
-#         self.button2.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-#         self.button2.clicked.connect(self.onPushNewFile)
-#         self.vBox.addWidget(self.button2)
-#
-#         self.button3 = QPushButton("Open File")
-#         self.button3.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-#         self.vBox.addWidget(self.button3)
-#
-#         self.hBox.addLayout(self.vBox)
-#         self.hBox.addStretch()
-#         self.hBox.addStretch()
-#         self.hBox.addStretch()
-#         self.hBox.addStretch()
-#         self.hBox.addStretch()
-#         self.hBox.addStretch()
-#         self.hBox.addStretch()
-#         self.hBox.addStretch()
-#
-#
-#         self.setLayout(self.hBox)
 
 
 app = QApplication(sys.argv)
