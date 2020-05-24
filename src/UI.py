@@ -5,6 +5,7 @@ from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 from PIL import Image
+from PIL.ImageQt import ImageQt
 import io
 import main
 
@@ -68,6 +69,9 @@ class MainWindow(QMainWindow):
         if filename:
             img = main.get_image_from_input(str(filename[0]), stringName, 1)
 
+        self.elementImage = ImageQt(img)
+        # get rid of the file upload button
+        self.elementBodyStackPane.setCurrentIndex(1)
         # get rid of the file upload button
 
 
@@ -156,10 +160,21 @@ class MainWindow(QMainWindow):
             self.fileUploadButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
             self.fileUploadButton.setCursor(QCursor(Qt.PointingHandCursor))
             self.fileUploadButton.setFont(QFont("Times", 12))
+            self.elementImage = None
             self.fileUploadButton.clicked.connect(self.fileUpload)
             self.elementBodyStackPane.addWidget(self.fileUploadButton)
             self.elementOptionsHBox = QHBoxLayout()
-            self.elementImage = QPixmap()
+            self.elementPixMap = QPixmap.fromImage(self.elementImage)
+            self.elementEditButton = QPushButton('Edit')
+            self.elementDeleteButton = QPushButton('Delete')
+            self.elementMoveButton = QPushButton('Move')
+            self.elementOptionsHBox.addWidget(self.elementPixMap)
+            self.elementOptionsHBox.addWidget(self.elementEditButton)
+            self.elementOptionsHBox.addWidget(self.elementDeleteButton)
+            self.elementOptionsHBox.addWidget(self.elementMoveButton)   
+            self.elementViewWidget = QtWidget()
+            self.elementViewWidget.setLayout(self.elementOptionsHBox)
+            self.elementBodyStackPane.addWidget(self.elementViewWidget)
 
         elif string == 'molecule':
             self.elementName = QLineEdit("Name your element! (e.g. Glucose Molecule)")
