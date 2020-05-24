@@ -20,3 +20,5 @@ def write_latex_molecule_to_txt(element_name):
     handle.write("\\centering\n")
     handle.write("\\includegraphics[width=90mm]{../out/" + element_name + ".png}\n")
     handle.write("\\end{figure}")
+
+get_molecule_image("glucose", "boog")
