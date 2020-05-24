@@ -61,9 +61,11 @@ class MainWindow(QMainWindow):
         filename = QFileDialog.getOpenFileName(self, 'Open File', '.', "Images (*.png *.xpm *.jpg)")
         # 3rd parameter in previous line is default directory to open to
 
-        img = main.get_image_from_input(filename, self.elementName, 1)
+        print(filename)
+        img = main.get_image_from_input(str(filename[0]), self.elementName, 1) #how do I get the element name of the image into here?
         print (img)
 
+        # get rid of the file upload button
 
     def newFileScreen(self):
         self.stackPane.setCurrentIndex(1)
