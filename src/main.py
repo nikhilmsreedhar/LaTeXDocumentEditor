@@ -3,7 +3,7 @@ from PIL import Image
 import imgHandler
 import chemReq
 import textToWolfram
-# import fileConversions
+import fileConversions
 import synthesize
 
 
@@ -60,11 +60,15 @@ def get_image_from_input(text_in, el_name, choice):
 
 def export(file_names, project_name):
     synthesize.write_elements_to_master_txt(file_names, project_name)
-    # file_name = fileConversions.generate_tex("../out/" + project_name + ".txt")
-    # fileConversions.generate_pdf(file_name)
+    file_name = fileConversions.generate_tex("../out/" + project_name + ".txt", project_name)
+    fileConversions.generate_pdf(file_name)
 
 
 # get_image_from_input("integral from 0 to 1 of x^3 dx", "equation1", 0)
-get_image_from_input("../imgs/IMG_8642.jpg", "equation2", 1)
+# get_image_from_input("../imgs/IMG_8642.jpg", "equation2", 1)
 # get_image_from_input("../imgs/quad.png", "equation3", 1)
 # get_image_from_input("angelic acid", "mol1", 2)
+
+file_names = ["header", "equation1", "equation2", "mol1", "equation3", "footer"]
+
+export(file_names, "bruh_project")
