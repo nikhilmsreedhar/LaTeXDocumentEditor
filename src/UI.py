@@ -100,22 +100,24 @@ class MainWindow(QMainWindow):
 
 
 
-        self.homeAppName = QLabel("App Name")
+        self.homeAppName = QLabel("EzLaTeX")
         self.homeAppName.setFont(QFont("Times", 36, QFont.Bold))
         self.homeAppName.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         self.homeAppName.setAlignment(Qt.AlignCenter)
         self.homeAppName.setStyleSheet("""
         QWidget {
+
         background-color: rgb(173, 216, 230);
         position: absolute;
         top: 0px;
+        height: 20 px;
         border-top-left-radius: 5px;
         border-top-right-radius: 20px;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 10px;
         }
-
         """)
+
         self.homeVBox.addWidget(self.homeAppName)
 
         self.homeHomeButton = QPushButton("Home")
@@ -129,7 +131,8 @@ class MainWindow(QMainWindow):
             padding-right: 0px;
             width: 33%;
             height: 200%;
-
+            border-bottom-left-radius: 25px;
+            border-top-left-radius: 25px;
             }
         """)
 
@@ -164,10 +167,12 @@ class MainWindow(QMainWindow):
             padding-left: 0px;
             width: 33%;
             height: 200%;
+            border-bottom-right-radius: 25px;
+            border-top-right-radius: 25px;
             }
         """)
 
-        self.homeAppText = QLabel("One dollar and eighty-seven cents. That was all. And sixty cents of it was in pennies. Pennies saved one and two at a time by bulldozing the grocer and the vegetable man and the butcher until one’s cheeks burned with the silent imputation of parsimony that such close dealing implied. One dollar and eighty-seven cents. And the next day would be Christmas...jjjjjj jjjjjjjjjj jjjjjjjjjjj jjjjjjj jjjjjjjjjj jjjjj jjjjjj jjjj jjjjj jjjjjjj jjjjj jjjjj jjj jjjL OLO LOL")
+        self.homeAppText = QLabel("A easy way to create LaTeX files with great support for chemical molecules, chemical equations, mathematical symbols, and other equaions in LaTeX. (The Best Part is that you don't need to know LaTeX)")
         self.homeAppText.setWordWrap(True)
         self.homeAppText.setStyleSheet("""
         QWidget {
@@ -245,7 +250,8 @@ class MainWindow(QMainWindow):
         self.mainPreviewWidget.setStyleSheet("""
         QWidget {
             border: 0.5px solid gray;
-            background-color: rgb(245, 245, 220);
+            background-color: rgb(255, 255, 255);
+            width: 100%;
             }
         """)
         self.mainScroll = QScrollArea()
