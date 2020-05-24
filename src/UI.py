@@ -55,9 +55,23 @@ class MainWindow(QMainWindow):
         self.homeH2Box.setSpacing(0)
 
 
+
         self.homeAppName = QLabel("App Name")
         self.homeAppName.setFont(QFont("Times", 36, QFont.Bold))
         self.homeAppName.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        self.homeAppName.setAlignment(Qt.AlignCenter)
+        self.homeAppName.setStyleSheet("""
+        QWidget {
+        background-color: rgb(173, 216, 230);
+        position: absolute;
+        top: 0px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 10px;
+        }
+
+        """)
         self.homeVBox.addWidget(self.homeAppName)
 
         self.homeHomeButton = QPushButton("Home")
@@ -69,6 +83,8 @@ class MainWindow(QMainWindow):
             border: 0.1px solid gray;
             background-color: rgb(173, 216, 230);
             padding-right: 0px;
+            width: 33%;
+            height: 200%;
 
             }
         """)
@@ -87,6 +103,8 @@ class MainWindow(QMainWindow):
             background-color: rgb(173, 216, 230);
             padding-right: 0px;
             padding-left: 0px;
+            width: 33%;
+            height: 200%;
             }
         """)
 
@@ -100,11 +118,21 @@ class MainWindow(QMainWindow):
             border: 0.1px solid gray;
             background-color: rgb(173, 216, 230);
             padding-left: 0px;
+            width: 33%;
+            height: 200%;
             }
         """)
 
         self.homeAppText = QLabel("One dollar and eighty-seven cents. That was all. And sixty cents of it was in pennies. Pennies saved one and two at a time by bulldozing the grocer and the vegetable man and the butcher until one’s cheeks burned with the silent imputation of parsimony that such close dealing implied. One dollar and eighty-seven cents. And the next day would be Christmas...jjjjjj jjjjjjjjjj jjjjjjjjjjj jjjjjjj jjjjjjjjjj jjjjj jjjjjj jjjj jjjjj jjjjjjj jjjjj jjjjj jjj jjjL OLO LOL")
         self.homeAppText.setWordWrap(True)
+        self.homeAppText.setStyleSheet("""
+        QWidget {
+            width: 75%;
+
+
+        }
+
+        """)
         self.homeAppText.setFont(QFont("Times", 24, QFont.Bold))
 
         self.homeFormatingVBox = QVBoxLayout(self)
