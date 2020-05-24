@@ -85,7 +85,7 @@ class MainWindow(QMainWindow):
 
         if string == 'type math':
             self.elementName = QLineEdit("Name your element! (e.g. Equation 1)")
-            # self.elementName.setGeometry(0,0,100,100)
+            #self.elementName.setGeometry(0,0,100,100)
             # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
             self.elementHeaderHBox.addWidget(self.elementName)
             self.elementHeaderHBox.addSpacing(1500)
@@ -390,9 +390,9 @@ class MainWindow(QMainWindow):
         self.mainScroll.setWidgetResizable(True)
 
         self.mainPageSimHBox = QHBoxLayout(self)
-        self.mainPageSimHBox.addSpacing(400)
+        self.mainPageSimHBox.addSpacing(200)
         self.mainPageSimHBox.addWidget(self.mainScroll)
-        self.mainPageSimHBox.addSpacing(400)
+        self.mainPageSimHBox.addSpacing(200)
 
         self.mainVBox.addWidget(self.mainTabWidget)
         # self.mainVBox.addSpacing(10)
