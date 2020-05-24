@@ -62,6 +62,7 @@ class MainWindow(QMainWindow):
         self.homeHBox = QHBoxLayout(self)
         self.homeVBox = QVBoxLayout(self)
         self.homeV2Box = QVBoxLayout(self)
+        self.homeH2Box = QHBoxLayout(self)
 
         self.homeAppName = QLabel("App Name")
         self.homeAppName.setFont(QFont("Times", 36, QFont.Bold))
@@ -71,7 +72,7 @@ class MainWindow(QMainWindow):
         self.homeHomeButton = QPushButton("Home")
         self.homeHomeButton.setFont(QFont("Times", 36, QFont.Bold))
         self.homeHomeButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.homeVBox.addWidget(self.homeHomeButton)
+        self.homeH2Box.addWidget(self.homeHomeButton)
         self.homeHomeButton.setStyleSheet("""
         QWidget {
             border: 0.5px solid gray;
@@ -83,7 +84,7 @@ class MainWindow(QMainWindow):
         self.homeNewFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.homeNewFileButton.setFont(QFont("Times", 36, QFont.Bold))
         self.homeNewFileButton.clicked.connect(self.newFileScreen)
-        self.homeVBox.addWidget(self.homeNewFileButton)
+        self.homeH2Box.addWidget(self.homeNewFileButton)
         self.homeNewFileButton.setStyleSheet("""
         QWidget {
             border: 0.5px solid gray;
@@ -94,7 +95,7 @@ class MainWindow(QMainWindow):
         self.homeOpenFileButton = QPushButton("Open File")
         self.homeOpenFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.homeOpenFileButton.setFont(QFont("Times", 36, QFont.Bold))
-        self.homeVBox.addWidget(self.homeOpenFileButton)
+        self.homeH2Box.addWidget(self.homeOpenFileButton)
         self.homeOpenFileButton.setStyleSheet("""
         QWidget {
             border: 0.5px solid gray;
@@ -110,15 +111,16 @@ class MainWindow(QMainWindow):
         self.homeFormatingVBox.addWidget(self.homeAppText)
         self.homeFormatingVBox.addSpacing(500)
 
-        self.homeHBox.addLayout(self.homeVBox)
+        self.homeVBox.addLayout(self.homeHBox)
         self.homeV2Box.addWidget(self.homeAppName)
         self.homeHBox.addSpacing(100)
         self.homeV2Box.addLayout(self.homeFormatingVBox)
         self.homeHBox.addLayout(self.homeV2Box)
+        self.homeVBox.addLayout(self.homeH2Box)
 
 
         self.homeWidget = QWidget()
-        self.homeWidget.setLayout(self.homeHBox)
+        self.homeWidget.setLayout(self.homeVBox)
         """
         END OF HOME PAGE UI
         """
