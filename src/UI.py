@@ -54,6 +54,7 @@ class MainWindow(QMainWindow):
         self.homeHomeButton = QPushButton("Home")
         self.homeHomeButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.homeH2Box.addWidget(self.homeHomeButton)
+        self.homeHomeButton.setFont(QFont("Times", 36, QFont.Bold))
         self.homeHomeButton.setStyleSheet("""
         QWidget {
             border: 0.5px solid gray;
@@ -63,6 +64,8 @@ class MainWindow(QMainWindow):
 
         self.homeNewFileButton = QPushButton("New File")
         self.homeNewFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.homeNewFileButton.setFont(QFont("Times", 36, QFont.Bold))
+
         self.homeNewFileButton.clicked.connect(self.newFileScreen)
         self.homeH2Box.addWidget(self.homeNewFileButton)
         self.homeNewFileButton.setStyleSheet("""
@@ -97,6 +100,7 @@ class MainWindow(QMainWindow):
         self.homeV2Box.addLayout(self.homeFormatingVBox)
         self.homeHBox.addLayout(self.homeV2Box)
         self.homeVBox.addLayout(self.homeH2Box)
+        self.homeBox = QHBoxLayout(self)
 
 
         self.homeWidget = QWidget()
@@ -111,18 +115,10 @@ class MainWindow(QMainWindow):
         self.mainVBox = QVBoxLayout(self)
         self.mainTabHBox = QHBoxLayout(self)
 
-        self.mainHomeAction = QAction('&Home')
-        self.mainHomeAction.triggered.connect(self.mainScreen)
-
-        # self.mainFileMenuBar = QMenuBar()
-        # self.mainFileMenu = self.mainFileMenuBar.addMenu('&File')
-        # self.mainFileMenu.addAction(self.mainHomeAction)
-
+        self.mainFileMenuBar = self.menuBar()
 
         self.mainFileButton = QPushButton("File")
         self.mainFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-        self.mainFileButton.setMenu(QMenu(self.mainFileButton))
-        self.mainFileButton.menu().addAction(self.mainHomeAction)
         self.mainFileButton.clicked.connect(self.mainScreen)
 
         self.mainInsertButton = QPushButton("Insert")
