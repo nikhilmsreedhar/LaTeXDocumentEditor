@@ -51,6 +51,7 @@ def get_image_from_input(text_in, el_name, choice):
         # Write LaTeX for inserting image
         chemReq.write_latex_molecule_to_txt(el_name)
 
+        # Return previously found PNG
         return molecule_image
 
     else:
@@ -65,4 +66,5 @@ def export(file_names, project_name):
 
 # get_image_from_input("integral from 0 to 1 of x^3 dx", "equation1", 0)
 # get_image_from_input("../imgs/IMG_8642.jpg", "equation2", 1)
-get_image_from_input("../imgs/quad.png", "equation3", 1)
+# get_image_from_input("../imgs/quad.png", "equation3", 1)
+get_image_from_input("angelic acid", "mol1", 2)

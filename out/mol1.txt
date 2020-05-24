@@ -1,0 +1,4 @@
+\begin{figure}[ht!]
+\centering
+\includgraphics[width=90mm]{../out/mol1.png}
+\end{figure}
