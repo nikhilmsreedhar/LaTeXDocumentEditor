@@ -87,10 +87,18 @@ class MainWindow(QMainWindow):
         self.mainVBox = QVBoxLayout(self)
         self.mainTabHBox = QHBoxLayout(self)
 
-        self.mainFileMenuBar = self.menuBar()
+        self.mainHomeAction = QAction('&Home')
+        self.mainHomeAction.triggered.connect(self.mainScreen)
+
+        # self.mainFileMenuBar = QMenuBar()
+        # self.mainFileMenu = self.mainFileMenuBar.addMenu('&File')
+        # self.mainFileMenu.addAction(self.mainHomeAction)
+
 
         self.mainFileButton = QPushButton("File")
         self.mainFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        self.mainFileButton.setMenu(QMenu(self.mainFileButton))
+        self.mainFileButton.menu().addAction(self.mainHomeAction)
         self.mainFileButton.clicked.connect(self.mainScreen)
 
         self.mainInsertButton = QPushButton("Insert")
