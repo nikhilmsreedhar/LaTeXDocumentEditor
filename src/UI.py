@@ -62,10 +62,10 @@ class MainWindow(QMainWindow):
     def fileUpload(self):
         filename = QFileDialog.getOpenFileName(self, 'Open File', '../imgs/', "Images (*.png *.xpm *.jpg)")
         # 3rd parameter in previous line is default directory to open to
-
-        print(filename)
+        stringName = self.elementName.text()
+        print(stringName)
         if filename:
-            img = main.get_image_from_input(str(filename[0]), "test_oog", 1) #how do I get the element name of the image into here?
+            img = main.get_image_from_input(str(filename[0]), stringName, 1) #how do I get the element name of the image into here?
 
         # get rid of the file upload button
 
