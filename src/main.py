@@ -65,12 +65,12 @@ def get_image_from_input(text_in, el_name, choice):
     elif choice == 4:
 
         handle = open('../out/' + el_name + '.txt', 'w')
-        handle.write("section{" + text_in + "}\n")
+        handle.write("\section{" + text_in + "}\n")
 
     elif choice == 5:
 
         handle = open('../out/' + el_name + '.txt', 'w')
-        handle.write("subsection{" + text_in + "}\n")
+        handle.write("\subsection{" + text_in + "}\n")
 
     else:
         print("Invalid choice")
