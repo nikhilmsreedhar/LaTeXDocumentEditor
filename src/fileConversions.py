@@ -7,44 +7,38 @@ import argparse
 import shutil
 import pathlib
 
-def generateTex(filepath):
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    tempTex = dir_path+r"\temp.tex"
-    print(tempTex)
-    #rawTempTex = r'{}'.format(tempTex)
-    fO = open(tempTex, "w")
-    fR = open(filepath, "r")
-    line = fR.readline()
-    while(line):
-        fO.write(line)
-        line = fR.readline()
-    fR.close()
-    fO.close()
-    return tempTex
 
-def generatePdf(filename):
-    #pdfl = PDFLaTeX.from_texfile(r"C:\Users\sohil\Documents\pubChemGetReq\templatedoc.tex")
-    #fR = open("temp.tex", "r")
-    #line = fR.readline()
-    #while(line):
-    #    print(line)
-    #    line = fR.readline()
-    #pdf, log, completed_process = pdfl.create_pdf()
+def generate_tex(filepath):
+    # dir_path = os.path.dirname(os.path.realpath(__file__))
+    dir_path = "../resources/"
+    temp_tex = dir_path + r"\temp.tex"
+    print(temp_tex)
+    fo = open(temp_tex, "w")
+    fr = open(filepath, "r")
+    line = fr.readline()
+    while line:
+        fo.write(line)
+        line = fr.readline()
+    fr.close()
+    fo.close()
+    return temp_tex
+
+
+def generate_pdf(filename):
     proc = subprocess.Popen(['pdflatex', filename])
     proc.communicate()
-    folderPath = pathlib.Path(__file__).parent
-    folder = str(folderPath)
-    folder = folder+"\\"
+    folder_path = pathlib.Path(__file__).parent
+    folder = str(folder_path)
+    folder = folder + "\\"
     print(folder)
-    for file_name in listdir(folderPath):
+    for file_name in listdir(folder_path):
         if file_name.endswith('.toc'):
             os.remove(folder + file_name)
         if file_name.endswith('.aux'):
-                os.remove(folder + file_name)
+            os.remove(folder + file_name)
         if file_name.endswith('.log'):
-                os.remove(folder + file_name)
-    #cmd = ['pdflatex', '-interaction', 'nonstopmode', filename]
-    #proc = subprocess.Popen(cmd)
-    #proc.communicate()
-tempFileName = generateTex(r"C:\Users\sohil\Documents\pubChemGetReq\test.txt")
-generatePdf(tempFileName)
+            os.remove(folder + file_name)
+
+
+# tempFileName = generate_tex(r"C:\Users\sohil\Documents\pubChemGetReq\test.txt")
+# generate_pdf(tempFileName)

@@ -18,6 +18,8 @@ def count_equals(x):
 
 
 def latex_cropper(text_in, latex):
+    print(text_in)
+    print(latex)
     x = count_equals(text_in)
     while count_equals(latex) > x:
         index = latex.rfind("=")
@@ -25,11 +27,11 @@ def latex_cropper(text_in, latex):
     return latex
 
 
-def latex_to_png(latex_file_name):
-    backslash_index = latex_file_name.rfind("\\")
-    element_name = latex_file_name[backslash_index:]
-    extension_index = element_name.find(".txt")
-    element_name = element_name[0:extension_index]
+def latex_to_png(latex_file_name, element_name):
+    # backslash_index = latex_file_name.rfind("\\")
+    # element_name = latex_file_name[backslash_index:]
+    # extension_index = element_name.find(".txt")
+    # element_name = element_name[0:extension_index]
 
     handle = open(latex_file_name, 'r')
     handle.readline()
@@ -79,9 +81,9 @@ def write_latex_eq_to_txt(latex, element_name):
     handle.write("\\end{equation}\n")
 
 
-input_example = "integral from 0 to 2 of x^2 dx"
-j = img_to_json(test_path)
-tex = json_to_latex(j)
-tex = latex_cropper(input_example, tex)
-write_latex_eq_to_txt(tex, "equation numero boog")
-latex_to_png('../out/' + "equation numero boog.txt")
+# input_example = "integral from 0 to 2 of x^2 dx"
+# j = img_to_json(test_path)
+# tex = json_to_latex(j)
+# tex = latex_cropper(input_example, tex)
+# write_latex_eq_to_txt(tex, "equation numero boog")
+# latex_to_png('../out/' + "equation numero boog.txt")
