@@ -70,6 +70,7 @@ class MainWindow(QMainWindow):
 
         # get rid of the file upload button
 
+
     #convert the strings to json then saving the file locally
     def convertToJson():
         dictionary = {}
@@ -77,6 +78,44 @@ class MainWindow(QMainWindow):
             dictionary.update(x, self.array[x])
         j = json.dumps(dictionary)
         with open()
+
+
+    def submitChem(self):
+        text_in = self.elementInput.text()
+        stringName = self.elementName.text()
+        img = main.get_image_from_input(text_in, stringName, 2)
+        print(img)
+
+    def addPar(self):
+        text_in = self.elementInput.text()
+        stringName = self.elementName.text()
+        main.get_image_from_input(text_in, stringName, 3)
+        latexTextFile = open("../out/" + stringName + ".txt", "r")
+        print(latexTextFile.read())
+
+
+    def addSec(self):
+        text_in = self.elementInput.text()
+        stringName = self.elementName.text()
+        main.get_image_from_input(text_in, stringName, 4)
+        latexTextFile = open("../out/" + stringName + ".txt", "r")
+        print(latexTextFile.read())
+
+    def addSubSec(self):
+        text_in = self.elementInput.text()
+        stringName = self.elementName.text()
+        main.get_image_from_input(text_in, stringName, 5)
+        latexTextFile = open("../out/" + stringName + ".txt", "r")
+        print(latexTextFile.read())
+
+
+
+    def submitMath(self):
+        text_in = self.elementInput.text()
+        stringName = self.elementName.text()
+        img = main.get_image_from_input(text_in, stringName, 0)
+        print(img)
+>>>>>>> 9eb8b9a08d126d13307511a29a64602c98dc446b
 
 
     def newFileScreen(self):
