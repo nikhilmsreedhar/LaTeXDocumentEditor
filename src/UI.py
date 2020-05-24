@@ -22,6 +22,7 @@ class MainWindow(QMainWindow):
                 # y += 1
             else:
                 self.mainPreviewVBox.removeWidget(self.mainPreviewVBox.itemAt(y).widget())
+
         print(self.mainPreviewVBox.count())
         self.mainPreviewVBox.activate()
         self.mainPreviewVBox.addSpacing(1000)
@@ -88,7 +89,7 @@ class MainWindow(QMainWindow):
             #self.elementName.setGeometry(0,0,100,100)
             # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
             self.elementHeaderHBox.addWidget(self.elementName)
-            self.elementHeaderHBox.addSpacing(1500)
+            self.elementHeaderHBox.addSpacing(150)
             self.elementBodyStackPane = QStackedLayout(self)
             self.elementBodyStackPane.addWidget(QLineEdit("Type your equation here in natural language (e.g. integral of x^3 dx)."))
 
@@ -99,7 +100,7 @@ class MainWindow(QMainWindow):
             # self.elementName.setGeometry(0,0,100,100)
             # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
             self.elementHeaderHBox.addWidget(self.elementName)
-            self.elementHeaderHBox.addSpacing(1500)
+            self.elementHeaderHBox.addSpacing(150)
             self.elementBodyStackPane = QStackedLayout(self)
             self.fileUploadButton = QPushButton("Upload File")
             self.fileUploadButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
@@ -113,7 +114,7 @@ class MainWindow(QMainWindow):
             # self.elementName.setGeometry(0,0,100,100)
             # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
             self.elementHeaderHBox.addWidget(self.elementName)
-            self.elementHeaderHBox.addSpacing(1500)
+            self.elementHeaderHBox.addSpacing(150)
             self.elementBodyStackPane = QStackedLayout(self)
             self.elementBodyStackPane.addWidget(QLineEdit("Type the name of the molecule you want here (e.g. glucose)."))
 
@@ -122,7 +123,7 @@ class MainWindow(QMainWindow):
             # self.elementName.setGeometry(0,0,100,100)
             # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
             self.elementHeaderHBox.addWidget(self.elementName)
-            self.elementHeaderHBox.addSpacing(1500)
+            self.elementHeaderHBox.addSpacing(150)
             self.elementBodyStackPane = QStackedLayout(self)
             self.elementBodyStackPane.addWidget(QLineEdit("Type your paragraph here."))
 
@@ -131,7 +132,7 @@ class MainWindow(QMainWindow):
             # self.elementName.setGeometry(0,0,100,100)
             # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
             self.elementHeaderHBox.addWidget(self.elementName)
-            self.elementHeaderHBox.addSpacing(1500)
+            self.elementHeaderHBox.addSpacing(150)
             self.elementBodyStackPane = QStackedLayout(self)
             self.elementBodyStackPane.addWidget(QLineEdit("Type your section name here."))
 
@@ -140,7 +141,7 @@ class MainWindow(QMainWindow):
             # self.elementName.setGeometry(0,0,100,100)
             # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
             self.elementHeaderHBox.addWidget(self.elementName)
-            self.elementHeaderHBox.addSpacing(1500)
+            self.elementHeaderHBox.addSpacing(150)
             # string is subsection
             self.elementBodyStackPane = QStackedLayout(self)
             self.elementBodyStackPane.addWidget(QLineEdit("Type your subsection name here."))
