@@ -267,6 +267,7 @@ class MainWindow(QMainWindow):
 
     def export(self):
         print("exporttt")
+        self.array.append("footer")
         main.export(self.array, "Project 1")
 
     def typeMath(self):
@@ -313,7 +314,7 @@ class MainWindow(QMainWindow):
         self.homeH2Box = QHBoxLayout(self)
         self.homeH2Box.setSpacing(0)
 
-        self.array = []
+        self.array = ["header"]
 
 
         self.homeAppName = QLabel("EzLaTeX")
