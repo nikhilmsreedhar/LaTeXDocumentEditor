@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 import sys
-import matplotlib.pyplot as plot
-import sympy
 from sympy import symbols, preview, Symbol
-from IPython.display import Latex
 import io
 import base64
 import requests

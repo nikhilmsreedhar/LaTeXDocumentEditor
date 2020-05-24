@@ -1,11 +1,11 @@
 import sys
+
 import PySide2
+from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
-from PySide2.QtCore import *
-
-
-
+from PIL import Image
+import main
 
 # Subclass QMainWindow to customise your application's main window
 class MainWindow(QMainWindow):
@@ -57,6 +57,13 @@ class MainWindow(QMainWindow):
             self.mainScreen()
 
 
+    def fileUpload(self):
+        filename = QFileDialog.getOpenFileName(self, 'Open File', '.', "Images (*.png *.xpm *.jpg)")
+        # 3rd parameter in previous line is default directory to open to
+
+        img = main.get_image_from_input(filename, self.elementName, 1)
+        print (img)
+
 
     def newFileScreen(self):
         self.stackPane.setCurrentIndex(1)
@@ -83,6 +90,7 @@ class MainWindow(QMainWindow):
             self.elementBodyStackPane.addWidget(QLineEdit("Type your equation here in natural language (e.g. integral of x^3 dx)."))
 
 
+
         elif string == 'image math':
             self.elementName = QLineEdit("Name your element! (e.g. Equation 2)")
             # self.elementName.setGeometry(0,0,100,100)
@@ -94,6 +102,7 @@ class MainWindow(QMainWindow):
             self.fileUploadButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
             self.fileUploadButton.setCursor(QCursor(Qt.PointingHandCursor))
             self.fileUploadButton.setFont(QFont("Times", 12))
+            self.fileUploadButton.clicked.connect(self.fileUpload)
             self.elementBodyStackPane.addWidget(self.fileUploadButton)
 
         elif string == 'molecule':
