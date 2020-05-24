@@ -71,14 +71,67 @@ class MainWindow(QMainWindow):
             self.mainPreviewVBox.itemAt(num - 1).changeSize(0,0)
 
         self.elementHeaderHBox = QHBoxLayout(self)
-        self.elementName = QLineEdit()
-        # self.elementName.setGeometry(0,0,100,100)
-        # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
-        self.elementHeaderHBox.addWidget(self.elementName)
-        self.elementHeaderHBox.addSpacing(1500)
 
-        self.elementBodyStackPane = QStackedLayout(self)
-        self.elementBodyStackPane.addWidget(QLabel(string))
+
+        if string == 'type math':
+            self.elementName = QLineEdit("Name your element! (e.g. Equation 1)")
+            # self.elementName.setGeometry(0,0,100,100)
+            # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+            self.elementHeaderHBox.addWidget(self.elementName)
+            self.elementHeaderHBox.addSpacing(1500)
+            self.elementBodyStackPane = QStackedLayout(self)
+            self.elementBodyStackPane.addWidget(QLineEdit("Type your equation here in natural language (e.g. integral of x^3 dx)."))
+
+
+        elif string == 'image math':
+            self.elementName = QLineEdit("Name your element! (e.g. Equation 2)")
+            # self.elementName.setGeometry(0,0,100,100)
+            # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+            self.elementHeaderHBox.addWidget(self.elementName)
+            self.elementHeaderHBox.addSpacing(1500)
+            self.elementBodyStackPane = QStackedLayout(self)
+            self.fileUploadButton = QPushButton("Upload File")
+            self.fileUploadButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+            self.fileUploadButton.setCursor(QCursor(Qt.PointingHandCursor))
+            self.fileUploadButton.setFont(QFont("Times", 12))
+            self.elementBodyStackPane.addWidget(self.fileUploadButton)
+
+        elif string == 'molecule':
+            self.elementName = QLineEdit("Name your element! (e.g. Glucose Molecule)")
+            # self.elementName.setGeometry(0,0,100,100)
+            # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+            self.elementHeaderHBox.addWidget(self.elementName)
+            self.elementHeaderHBox.addSpacing(1500)
+            self.elementBodyStackPane = QStackedLayout(self)
+            self.elementBodyStackPane.addWidget(QLineEdit("Type the name of the molecule you want here (e.g. glucose)."))
+
+        elif string == 'paragraph':
+            self.elementName = QLineEdit("Name your element! (e.g. Paragraph 1)")
+            # self.elementName.setGeometry(0,0,100,100)
+            # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+            self.elementHeaderHBox.addWidget(self.elementName)
+            self.elementHeaderHBox.addSpacing(1500)
+            self.elementBodyStackPane = QStackedLayout(self)
+            self.elementBodyStackPane.addWidget(QLineEdit("Type your paragraph here."))
+
+        elif string == 'section':
+            self.elementName = QLineEdit("Name your element! (e.g. Section 1)")
+            # self.elementName.setGeometry(0,0,100,100)
+            # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+            self.elementHeaderHBox.addWidget(self.elementName)
+            self.elementHeaderHBox.addSpacing(1500)
+            self.elementBodyStackPane = QStackedLayout(self)
+            self.elementBodyStackPane.addWidget(QLineEdit("Type your section name here."))
+
+        else:
+            self.elementName = QLineEdit("Name your element! (e.g. Subsection 3.4)")
+            # self.elementName.setGeometry(0,0,100,100)
+            # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+            self.elementHeaderHBox.addWidget(self.elementName)
+            self.elementHeaderHBox.addSpacing(1500)
+            # string is subsection
+            self.elementBodyStackPane = QStackedLayout(self)
+            self.elementBodyStackPane.addWidget(QLineEdit("Type your subsection name here."))
 
         self.elementFinalVBox = QVBoxLayout(self)
 
@@ -222,14 +275,14 @@ class MainWindow(QMainWindow):
         """)
         self.homeAppText.setFont(QFont("Times", 24, QFont.Bold))
 
-        self.homeFormatingVBox = QVBoxLayout(self)
-        self.homeFormatingVBox.addWidget(self.homeAppText)
-        self.homeFormatingVBox.addSpacing(500)
+        self.homeFormattingVBox = QVBoxLayout(self)
+        self.homeFormattingVBox.addWidget(self.homeAppText)
+        self.homeFormattingVBox.addSpacing(500)
 
         self.homeVBox.addLayout(self.homeHBox)
         self.homeV2Box.addWidget(self.homeAppName)
         self.homeHBox.addSpacing(1)
-        self.homeV2Box.addLayout(self.homeFormatingVBox)
+        self.homeV2Box.addLayout(self.homeFormattingVBox)
         self.homeHBox.addLayout(self.homeV2Box)
         self.homeVBox.addLayout(self.homeH2Box)
         self.homeBox = QHBoxLayout(self)
