@@ -8,10 +8,10 @@ import shutil
 import pathlib
 
 
-def generate_tex(filepath):
+def generate_tex(filepath, project_name):
     # dir_path = os.path.dirname(os.path.realpath(__file__))
     dir_path = "../resources/"
-    temp_tex = dir_path + r"\temp.tex"
+    temp_tex = dir_path + project_name + ".tex"
     print(temp_tex)
     fo = open(temp_tex, "w")
     fr = open(filepath, "r")

@@ -1,0 +1,16 @@
+\documentclass[a4paper, 12pt, titlepage, legno]{article}
+\usepackage[english]{babel}
+\usepackage[a4paper, inner=1.25in, outer=1.25in, top=1.25in, bottom = 1.25in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{wasysym}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{marvosym}
+\usepackage{graphicx}
+
+\begin{document}
+\tableofcontents
+
+\newpage

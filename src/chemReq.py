@@ -18,5 +18,5 @@ def write_latex_molecule_to_txt(element_name):
     handle = open('../out/' + element_name + '.txt', 'w')
     handle.write("\\begin{figure}[ht!]\n")
     handle.write("\\centering\n")
-    handle.write("\\includgraphics[width=90mm]{../out/" + element_name + ".png}\n")
+    handle.write("\\includegraphics[width=90mm]{../out/" + element_name + ".png}\n")
     handle.write("\\end{figure}")
