@@ -69,9 +69,12 @@ class MainWindow(QMainWindow):
             img = main.get_image_from_input(str(filename[0]), stringName, 1)
 
         # get rid of the file upload button
-
-
-
+    def convertToJson(self):
+        dictionary = {}
+        for x in range(len(self.array)):
+             dictionary.update(x, self.array[x])
+        with open("project_data.json", "w") as write_file:
+            json.dump(dictionary, write_file)
 
 
     def submitChem(self):
