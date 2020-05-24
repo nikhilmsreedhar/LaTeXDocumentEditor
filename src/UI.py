@@ -268,20 +268,34 @@ class MainWindow(QMainWindow):
             # self.elementName.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
             self.elementHeaderHBox.addWidget(self.elementName)
             self.elementHeaderHBox.addSpacing(150)
-            # string is subsection
             self.elementBodyStackPane = QStackedLayout(self)
-            self.elementInput = QLineEdit("Type your subsection name here.")
-            self.elementBodyStackPane.addWidget(self.elementInput)
-
             self.elementVBoxButton = QVBoxLayout(self)
-            self.elementSubmitButton = QPushButton('Add Section')
+            self.elementSubmitButton = QPushButton('Add Subsection')
             self.elementSubmitButton.clicked.connect(self.addSubSec)
-
+            self.elementInput = QLineEdit("Type your subsection name here.")
             self.elementVBoxButton.addWidget(self.elementInput)
             self.elementVBoxButton.addWidget(self.elementSubmitButton)
             self.elementSubmitWidget = QWidget()
             self.elementSubmitWidget.setLayout(self.elementVBoxButton)
             self.elementBodyStackPane.addWidget(self.elementSubmitWidget)
+
+
+            # self.elementHeaderHBox.addWidget(self.elementName)
+            # self.elementHeaderHBox.addSpacing(150)
+            # # string is subsection
+            # self.elementBodyStackPane = QStackedLayout(self)
+            # self.elementInput = QLineEdit("Type your subsection name here.")
+            # self.elementBodyStackPane.addWidget(self.elementInput)
+            #
+            # self.elementVBoxButton = QVBoxLayout(self)
+            # self.elementSubmitButton = QPushButton('Add Section')
+            # self.elementSubmitButton.clicked.connect(self.addSubSec)
+            #
+            # self.elementVBoxButton.addWidget(self.elementInput)
+            # self.elementVBoxButton.addWidget(self.elementSubmitButton)
+            # self.elementSubmitWidget = QWidget()
+            # self.elementSubmitWidget.setLayout(self.elementVBoxButton)
+            # self.elementBodyStackPane.addWidget(self.elementSubmitWidget)
 
         self.elementFinalVBox = QVBoxLayout(self)
 
