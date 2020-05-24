@@ -24,10 +24,11 @@ def generate_tex(filepath, project_name):
     return temp_tex
 
 
-def generate_pdf(filename):
+def generate_pdf(filename, project_name):
     proc = subprocess.Popen(['pdflatex', filename])
     proc.communicate()
-    folder_path = pathlib.Path(__file__).parent
+    #folder_path = pathlib.Path(__file__).parent
+    shutil.move(pathlib.Path(__file__), "../out/" + project_name + ".pdf")
     folder = str(folder_path)
     folder = folder + "\\"
     print(folder)

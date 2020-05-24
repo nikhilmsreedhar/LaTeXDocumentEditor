@@ -28,27 +28,9 @@ class MainWindow(QMainWindow):
 
         self.mainPreviewVBox.addSpacing(50)
         self.mainPreviewVBox.addWidget(QLabel('hello'))
-        self.mainPreviewVBox.addSpacing((maxElements - len(elementList) + 1) * 100)
+        self.mainPreviewVBox.addSpacing((maxElements - len(elementList) + 1) * 75)
 
-        # for x in range(self.mainPreviewVBox.count()):
-        #     if not isinstance(elementList[x], PySide2.QtWidgets.QSpacerItem):
-        #         elementList.append(self.mainPreviewVBox.itemAt(x))
-        # print(str(elementList))
-        #
-        # for x in range(self.mainPreviewVBox.count()):
-        #     if isinstance(elementList[x], PySide2.QtWidgets.QSpacerItem):
-        #         elementList[x].changeSize(0,0)
-        #         print('lmao')
-        #
-        #
-        #
-        # for x in range(len(elementList)):
-        #     self.mainPreviewVBox.addSpacing(75)
-        #     self.mainPreviewVBox.addWidget(elementList[x])
-        # self.mainPreviewVBox.addSpacing(75)
-        # self.mainPreviewVBox.addWidget(QLabel('hello'))
-        # self.mainPreviewVBox.addSpacing((maxElements - len(elementList) + 1) * 100)
-        # self.mainPreviewVBox.addWidget(QLabel('hello'))
+
 
 
 
@@ -67,10 +49,9 @@ class MainWindow(QMainWindow):
         self.homeAppName = QLabel("App Name")
         self.homeAppName.setFont(QFont("Times", 36, QFont.Bold))
         self.homeAppName.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        self.homeAppName.setAlignment(Qt.AlignCenter)
+        self.homeVBox.addWidget(self.homeAppName)
 
         self.homeHomeButton = QPushButton("Home")
-        self.homeHomeButton.setFont(QFont("Times", 36, QFont.Bold))
         self.homeHomeButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.homeH2Box.addWidget(self.homeHomeButton)
         self.homeHomeButton.setStyleSheet("""
@@ -82,7 +63,6 @@ class MainWindow(QMainWindow):
 
         self.homeNewFileButton = QPushButton("New File")
         self.homeNewFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.homeNewFileButton.setFont(QFont("Times", 36, QFont.Bold))
         self.homeNewFileButton.clicked.connect(self.newFileScreen)
         self.homeH2Box.addWidget(self.homeNewFileButton)
         self.homeNewFileButton.setStyleSheet("""
@@ -130,6 +110,8 @@ class MainWindow(QMainWindow):
         """
         self.mainVBox = QVBoxLayout(self)
         self.mainTabHBox = QHBoxLayout(self)
+
+        self.mainFileMenuBar = self.menuBar()
 
         self.mainFileButton = QPushButton("File")
         self.mainFileButton.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
