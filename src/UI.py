@@ -15,6 +15,39 @@ class MainWindow(QMainWindow):
         print('bruh')
         self.stackPane.setCurrentIndex(0)
 
+    def dlgAccept(self):
+        self.save()
+
+
+    def dlgReject(self):
+        self.mainScreen()
+
+
+    def returnToMainScreen(self):
+        print('bruh')
+        if not MainWindow.saved:
+
+            dlg = QDialog(self)
+            dlg.setWindowTitle("Unsaved Changes")
+
+            mainVerticalLayout = QVBoxLayout(dlg)
+            questionGroupBox = QLabel("Do you want to close without saving?")
+            mainVerticalLayout.addWidget(questionGroupBox)
+
+            buttonBox = QDialogButtonBox()
+            buttonBox.setStandardButtons(QDialogButtonBox.Save | QDialogButtonBox.Close)
+            buttonBox.button(QDialogButtonBox.Save).clicked.connect(self.dlgAccept)
+            buttonBox.button(QDialogButtonBox.Close).clicked.connect(self.dlgReject)
+            mainVerticalLayout.addWidget(buttonBox)
+            #dlg.HBox = QHBoxLayout()
+            #dlg.HBox.addWidget(QDialogButtonBox.Yes | QDialogButtonBox.No)
+            #dlg.HBox.addWidget(QDialogButtonBox.Yes)
+            #dlg.HBox.addWidget(QDialogButtonBox.No)
+            dlg.setWindowModality(Qt.ApplicationModal)
+            dlg.exec_()
+            
+
+
     def newFileScreen(self):
         print('hello')
         self.stackPane.setCurrentIndex(1)
@@ -36,7 +69,7 @@ class MainWindow(QMainWindow):
         print("saveee")
         saved = True
 
-    def export():
+    def export(self):
         print("exporttt")
 
 
@@ -126,7 +159,7 @@ class MainWindow(QMainWindow):
         self.mainTabHBox = QHBoxLayout(self)
 
         self.mainHomeAction = QAction('&Home')
-        self.mainHomeAction.triggered.connect(self.mainScreen)
+        self.mainHomeAction.triggered.connect(self.returnToMainScreen)
 
         self.mainExportAction = QAction('&Export')
         self.mainExportAction.triggered.connect(self.export)
