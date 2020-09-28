@@ -1,5 +1,3 @@
 # LaTeXDocumentEditor
 
-Document Editor tool for students/teachers to create LaTeX documents without using LaTeX. 
-
-FuzzyEureka
+For many students and teachers in today's age of online learning, it is very difficult to prepare organized notes in an easy and efficient fashion. EzLaTeX brings the power of the popular academic document processing language LaTeX with a plethora of convenient features and no prior experience required. Simply create an EzLaTeX project and select 'insert', and several options become available. You can add equations to your document by typing them in natural language or by uploading a handwritten picture. EzLaTeX will interpret it either way and create LaTeX code to represent it. Moreover, for any chemistry students, EzLaTeX allows you to insert a molecular structure image simply by inputting a molecule name. The image to equation feature supports chemical equations as well. To organize your information, you can delineate everything into clean sections and subsections. At the end, you'll get a nicely formatted PDF of your project.
